@@ -1,53 +1,57 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="16dp"
     tools:context="com.binodnme.epl.fragment.StandingsFragment">
 
     <LinearLayout
+        android:id="@+id/standings_header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_weight="0.5"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/club"
-            android:layout_weight="6"/>
+        android:layout_height="50dp"
+        android:gravity="center">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/match_played"
-            android:layout_weight="1"/>
+            android:layout_weight="7"
+            android:text="@string/club" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/goals_for"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="@string/match_played" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/goals_against"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="@string/goals_for" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/points"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="@string/goals_against" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/points" />
     </LinearLayout>
+
+    <include
+        layout="@layout/horizontal_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/standings_header" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/standings_holder_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        />
+        android:paddingTop="50dp" />
 
-</FrameLayout>
+</RelativeLayout>

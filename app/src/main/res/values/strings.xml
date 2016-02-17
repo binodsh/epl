@@ -8,4 +8,5 @@
     <string name="goals_for">GF</string>
     <string name="goals_against">GA</string>
     <string name="points">Pts</string>
+    <string name="title_activity_match_details">MatchDetailsActivity</string>
 </resources>

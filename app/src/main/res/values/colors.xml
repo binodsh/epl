@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">#457ad0</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="white">#ffffff</color>
     <color name="colorDivider">#d6d6d6</color>
     <color name="tabSelected">#3c74cf</color>
     <color name="tabNotSelected">#4379d0</color>
+    <color name="colorMatchdayTitle">#dadada</color>
 </resources>
