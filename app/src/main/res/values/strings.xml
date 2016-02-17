@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">EPL</string>
+    <string name="premier_league">Premier League</string>
     <string name="action_settings">Settings</string>
+
+    <string name="club">Club</string>
+    <string name="match_played">MP</string>
+    <string name="goals_for">GF</string>
+    <string name="goals_against">GA</string>
+    <string name="points">Pts</string>
 </resources>
