@@ -11,14 +11,16 @@ import android.widget.TextView;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.activity.MatchDetailsActivity;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
 /**
  * Created by binodnme on 2/16/16.
  */
-public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements StickyRecyclerHeadersAdapter{
     private static final int MATCH_DAY = 0;
     private static final int MATCH = 1;
     private String[] dataSet;
+
     public FixtureAdapter(){
 
     }
@@ -41,6 +43,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
+
     public FixtureAdapter(String[] ds){
         this.dataSet = ds;
     }
@@ -49,19 +52,22 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
         RecyclerView.ViewHolder vh ;
-        switch (viewType){
-            case MATCH_DAY:
-                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture_match_day, parent, false);
-                vh = new MatchDayTitleViewHolder(v);
-                break;
+//        switch (viewType){
+//            case MATCH_DAY:
+//                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture_match_day, parent, false);
+//                vh = new MatchDayTitleViewHolder(v);
+//                break;
+//
+//            case MATCH:
+//                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture, parent, false);
+//                vh = new FixtureViewHolder(v);
+//                break;
+//            default:
+//                vh = null;
+//        }
 
-            case MATCH:
-                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture, parent, false);
-                vh = new FixtureViewHolder(v);
-                break;
-            default:
-                vh = null;
-        }
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture, parent, false);
+        vh = new FixtureViewHolder(v);
 
         return vh;
     }
@@ -89,6 +95,30 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             });
         }
+    }
+
+
+
+
+    @Override
+    public long getHeaderId(int position) {
+        return position%3 == 0 ? position : -1;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
+        Log.i(this.getClass().getSimpleName(), "oncreateViewHolder called");
+        View v;
+        RecyclerView.ViewHolder vh ;
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture_match_day, parent, false);
+        vh = new FixtureViewHolder(v);
+
+        return vh;
+    }
+
+    @Override
+    public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
+
     }
 
     @Override

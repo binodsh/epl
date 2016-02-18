@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.adapter.FixtureAdapter;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
+import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
 /**
  * Created by binodnme on 2/16/16.
@@ -34,6 +36,7 @@ public class FixtureFragment extends Fragment{
         String[] testData = new String[]{"a","a","a","a","a"};
         mAdapter = new FixtureAdapter(testData);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new StickyRecyclerHeadersDecoration((StickyRecyclerHeadersAdapter) mAdapter));
 
         return rootView;
     }
