@@ -14,51 +14,44 @@
             android:id="@+id/position"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="1" />
+            android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/club_logo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="10dp"
-            android:src="@drawable/ic_manchester_united"/>
+            android:paddingRight="10dp" />
 
         <TextView
             android:id="@+id/club_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:text="Man United" />
+            android:layout_weight="6" />
 
         <TextView
             android:id="@+id/match_played"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1" />
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/goals_for"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1" />
+            android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/goals_agains"
+            android:id="@+id/goals_against"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1" />
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/points"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="1" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <include layout="@layout/horizontal_divider" />

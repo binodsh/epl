@@ -83,18 +83,14 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(position%4 != MATCH_DAY){
-            FixtureViewHolder fixtureViewHolder = (FixtureViewHolder) holder;
-            fixtureViewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), MatchDetailsActivity.class);
-                    Log.i("tag", "clicked");
-                    v.getContext().startActivity(intent);
-
-                }
-            });
-        }
+        FixtureViewHolder fixtureViewHolder = (FixtureViewHolder) holder;
+        fixtureViewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MatchDetailsActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
 

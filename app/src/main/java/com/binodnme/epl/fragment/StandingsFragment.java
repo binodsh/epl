@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.adapter.StandingsAdapter;
+import com.binodnme.epl.model.ClubStanding;
+import com.binodnme.epl.model.PremierLeague;
+
+import java.util.List;
 
 /**
  * Created by binodnme on 2/16/16.
@@ -32,8 +36,10 @@ public class StandingsFragment extends Fragment {
         mRecycler = (RecyclerView) rootView.findViewById(R.id.standings_holder_layout);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecycler.setLayoutManager(mLayoutManager);
-        String[] dataset = new String[]{"a","a","a","a"};
-        mAdapter = new StandingsAdapter(dataset);
+
+        List<ClubStanding> clubStandings = PremierLeague.getCurrentStanding(getActivity());
+
+        mAdapter = new StandingsAdapter(clubStandings);
         mRecycler.setAdapter(mAdapter);
         return rootView;
 
