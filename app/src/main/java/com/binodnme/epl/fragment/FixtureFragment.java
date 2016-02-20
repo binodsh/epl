@@ -11,8 +11,13 @@ import android.view.ViewGroup;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.adapter.FixtureAdapter;
+import com.binodnme.epl.model.Fixture;
+import com.binodnme.epl.model.PremierLeague;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by binodnme on 2/16/16.
@@ -33,8 +38,11 @@ public class FixtureFragment extends Fragment{
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.fixture_holder_layout);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        String[] testData = new String[]{"a","a","a","a","a"};
-        mAdapter = new FixtureAdapter(testData);
+
+        List<Fixture> fixtures;
+        fixtures = PremierLeague.getFixtures(getActivity());
+
+        mAdapter = new FixtureAdapter(fixtures);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new StickyRecyclerHeadersDecoration((StickyRecyclerHeadersAdapter) mAdapter));
 

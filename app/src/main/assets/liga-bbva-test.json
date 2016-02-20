@@ -1,0 +1,610 @@
+{
+  "meta": {
+    "competitionId": "10",
+    "seasonId": "1257",
+    "matchdayId": "5663591",
+    "iconSrc": "https://images.onefootball.com/icons/56/%@.png"
+  },
+  "kickoffs": [
+    {
+      "kickoff": "2016-02-19T19:30:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446328",
+              "matchIdOpta": "",
+              "period": "FullTime",
+              "minute": 93,
+              "scorehome": 3,
+              "scoreaway": 0,
+              "scorehomefirsthalf": 2,
+              "scoreawayfirsthalf": 0,
+              "attendance": 13665,
+              "stadium": {
+                "id": "",
+                "name": "",
+                "city": "",
+                "country": "",
+                "countryCode": ""
+              },
+              "referee": {
+                "id": "709",
+                "name": "Jose Luis Gonzalez Gonzalez"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "218",
+                "name": "Levante"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "216",
+                "name": "Getafe"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "431784740291",
+                  "type": "Yellow",
+                  "minute": "42",
+                  "player": {
+                    "id": 41166,
+                    "name": "Santiago Vergini",
+                    "teamId": null,
+                    "internalTeamId": "216"
+                  }
+                },
+                {
+                  "eventId": "578521140369",
+                  "type": "Yellow",
+                  "minute": "46",
+                  "player": {
+                    "id": 54794,
+                    "name": "Deyverson",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                },
+                {
+                  "eventId": "709336434904",
+                  "type": "Yellow",
+                  "minute": "46",
+                  "player": {
+                    "id": 12488,
+                    "name": "Vicente Guaita",
+                    "teamId": null,
+                    "internalTeamId": "216"
+                  }
+                },
+                {
+                  "eventId": "999392140243",
+                  "type": "Yellow",
+                  "minute": "68",
+                  "player": {
+                    "id": 12175,
+                    "name": "Verza",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "386920296202",
+                  "type": "Goal",
+                  "minute": 10,
+                  "period": "FirstHalf",
+                  "score": "1:0",
+                  "teamId": "218",
+                  "player": {
+                    "id": 50802,
+                    "name": "Morales",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                },
+                {
+                  "eventId": "335994280405",
+                  "type": "Penalty",
+                  "minute": 43,
+                  "period": "FirstHalf",
+                  "score": "2:0",
+                  "teamId": "218",
+                  "player": {
+                    "id": 1349,
+                    "name": "Giuseppe Rossi",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                },
+                {
+                  "eventId": "820662816961",
+                  "type": "Goal",
+                  "minute": 81,
+                  "period": "SecondHalf",
+                  "score": "3:0",
+                  "teamId": "218",
+                  "player": {
+                    "id": 3507,
+                    "name": "Joan Verdú",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-20T15:00:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446327",
+              "matchIdOpta": "",
+              "period": "SecondHalf",
+              "minute": 93,
+              "scorehome": 1,
+              "scoreaway": 2,
+              "scorehomefirsthalf": 1,
+              "scoreawayfirsthalf": 2,
+              "attendance": 26951,
+              "stadium": {
+                "id": "615",
+                "name": "Gran Canaria",
+                "city": "Las Palmas",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "686",
+                "name": "Carlos Del Cerro Grande"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "687",
+                "name": "Las Palmas"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "5",
+                "name": "Barcelona"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "331035279501",
+                  "type": "Yellow",
+                  "minute": "33",
+                  "player": {
+                    "id": 5360,
+                    "name": "Arda Turan",
+                    "teamId": null,
+                    "internalTeamId": "5"
+                  }
+                },
+                {
+                  "eventId": "898861291878",
+                  "type": "Yellow",
+                  "minute": "84",
+                  "player": {
+                    "id": 29516,
+                    "name": "Roque",
+                    "teamId": null,
+                    "internalTeamId": "687"
+                  }
+                },
+                {
+                  "eventId": "525476687257",
+                  "type": "Yellow",
+                  "minute": "86",
+                  "player": {
+                    "id": 147,
+                    "name": "Dani Alves",
+                    "teamId": null,
+                    "internalTeamId": "5"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "11226746524",
+                  "type": "Goal",
+                  "minute": 6,
+                  "period": "FirstHalf",
+                  "score": "0:1",
+                  "teamId": "5",
+                  "player": {
+                    "id": 1708,
+                    "name": "Luis Suárez",
+                    "teamId": null,
+                    "internalTeamId": "5"
+                  }
+                },
+                {
+                  "eventId": "932072005394",
+                  "type": "Goal",
+                  "minute": 10,
+                  "period": "FirstHalf",
+                  "score": "1:1",
+                  "teamId": "687",
+                  "player": {
+                    "id": 41006,
+                    "name": "Willian José",
+                    "teamId": null,
+                    "internalTeamId": "687"
+                  }
+                },
+                {
+                  "eventId": "1057880047091",
+                  "type": "Goal",
+                  "minute": 39,
+                  "period": "FirstHalf",
+                  "score": "1:2",
+                  "teamId": "5",
+                  "player": {
+                    "id": 19515,
+                    "name": "Neymar",
+                    "teamId": null,
+                    "internalTeamId": "5"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-20T17:15:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446325",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "189",
+                "name": "RCDE Stadium",
+                "city": "Barcelona",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "740",
+                "name": "Ricardo De Burgos Bengoetxea"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "215",
+                "name": "Espanyol"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "214",
+                "name": "Deportivo"
+              },
+              "hasLiveTicker": true,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-20T19:30:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446331",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "90",
+                "name": "Benito Villamarín",
+                "city": "Sevilla",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "691",
+                "name": "Real Betis"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "225",
+                "name": "Sporting de Gijón"
+              },
+              "hasLiveTicker": false,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-20T21:05:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446324",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "91",
+                "name": "Balaídos",
+                "city": "Vigo, Pontevedra",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "680",
+                "name": "Celta de Vigo"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "1248",
+                "name": "Eibar"
+              },
+              "hasLiveTicker": false,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-21T11:00:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446330",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "627",
+                "name": "Campo de Fútbol de Vallecas",
+                "city": "Madrid",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "690",
+                "name": "Rayo Vallecano"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "28",
+                "name": "Sevilla FC"
+              },
+              "hasLiveTicker": true,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-21T15:00:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446329",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "86",
+                "name": "La Rosaleda",
+                "city": "Málaga",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "219",
+                "name": "Málaga"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "26",
+                "name": "Real Madrid"
+              },
+              "hasLiveTicker": true,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-21T17:15:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446322",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "",
+                "name": "",
+                "city": "",
+                "country": "",
+                "countryCode": ""
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "213",
+                "name": "Athletic Club"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "223",
+                "name": "R. Sociedad"
+              },
+              "hasLiveTicker": false,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            },
+            {
+              "matchId": "446326",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "",
+                "name": "",
+                "city": "",
+                "country": "",
+                "countryCode": ""
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "686",
+                "name": "Granada CF"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "143",
+                "name": "Valencia CF"
+              },
+              "hasLiveTicker": true,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-21T19:30:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446323",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "",
+                "name": "",
+                "city": "",
+                "country": "",
+                "countryCode": ""
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "3",
+                "name": "Atlético Madrid"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "226",
+                "name": "Villarreal"
+              },
+              "hasLiveTicker": true,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

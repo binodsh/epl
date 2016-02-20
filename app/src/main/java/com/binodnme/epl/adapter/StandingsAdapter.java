@@ -1,10 +1,6 @@
 package com.binodnme.epl.adapter;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.binodnme.epl.EplApplication;
 import com.binodnme.epl.R;
 import com.binodnme.epl.model.ClubStanding;
 
@@ -67,7 +62,7 @@ public class StandingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         StandingsViewHolder svh = (StandingsViewHolder) holder;
         ClubStanding cs = dataset.get(position);
         Context context = svh.logo.getContext();
-        int id = getResourceid(context, cs.getName());
+        int id = getResourceId(context, cs.getName());
         svh.logo.setImageResource(id == 0 ? R.mipmap.ic_launcher : id);
 
         svh.position.setText(String.valueOf(cs.getPosition()));
@@ -83,7 +78,7 @@ public class StandingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return dataset.size();
     }
 
-    public int getResourceid(Context context, String name){
+    public int getResourceId(Context context, String name){
         name = name.toLowerCase().replace(' ','_');
 
         return context.getResources().getIdentifier(name, "drawable", context.getPackageName());

@@ -40,7 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arsenal"/>
+                android:text="Manchester City"/>
         </LinearLayout>
 
         <TextView
@@ -61,7 +61,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:src="@drawable/manchester_united"/>
+                android:src="@drawable/manchester_utd"/>
 
             <TextView
                 android:layout_width="wrap_content"
