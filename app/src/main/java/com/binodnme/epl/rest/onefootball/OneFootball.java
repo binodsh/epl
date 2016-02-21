@@ -6,6 +6,7 @@ import android.util.Log;
 import com.binodnme.epl.constants.ApplicationConstant;
 import com.binodnme.epl.model.ClubStanding;
 import com.binodnme.epl.model.Fixture;
+import com.binodnme.epl.utils.DateUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +15,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +41,7 @@ public class OneFootball {
     private static final String TEAM_STATS = "teamstats";
 
     private static final String KICK_OFFS = "kickoffs";
+    private static final String KICK_OFF = "kickoff";
     private static final String MATCHES = "matches";
     private static final String MATCH_ID = "matchId";
     private static final String TEAM_HOME = "teamhome";
@@ -47,6 +50,13 @@ public class OneFootball {
     private static final String SCORE_HOME = "scorehome";
     private static final String SCORE_AWAY = "scoreaway";
     private static final String MATCH_STATE = "period";
+
+
+    private static final String FULLTIME = "fulltime";
+    private static final String HALFTIME = "halftime";
+    private static final String FIRSTHALF = "firsthalf";
+    private static final String SECONDHALF = "secondhalf";
+    private static final String PREMATCH = "prematch";
 
 
 
@@ -110,7 +120,7 @@ public class OneFootball {
 
         String json;
         try {
-            InputStream is = context.getAssets().open(MATCH_DAY_JSON);
+            InputStream is = context.getAssets().open(TEST_JSON);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -125,6 +135,7 @@ public class OneFootball {
             for(int i=0; i<kickOffs.length(); i++){
                 JSONObject obj = kickOffs.getJSONObject(i);
                 JSONArray groups = obj.getJSONArray(GROUPS);
+                String stringDate = obj.getString(KICK_OFF);
                 JSONArray matches = null;
                 for (int j=0; j<groups.length(); j++){
                     try{
@@ -148,24 +159,28 @@ public class OneFootball {
                         fixture.setAwayTeamName(teamAway.getString(NAME));
                         fixture.setAwayTeamScore(match.getInt(SCORE_AWAY));
 
+                        String dateFormat = "yyyy-MM-dd'T'HH:mm:ss";
+                        Date matchDate = DateUtils.getDateObject(stringDate, dateFormat);
+                        fixture.setMatchDate(matchDate);
+
                         switch (match.getString(MATCH_STATE).toLowerCase()){
-                            case "fulltime":
+                            case FULLTIME:
                                 fixture.setMatchStatus(ApplicationConstant.FT);
                                 break;
 
-                            case "halftime":
+                            case HALFTIME:
                                 fixture.setMatchStatus(ApplicationConstant.HT);
                                 break;
 
-                            case "firsthalf":
+                            case FIRSTHALF:
                                 fixture.setMatchStatus(ApplicationConstant.FH);
                                 break;
 
-                            case "secondhalf":
+                            case SECONDHALF:
                                 fixture.setMatchStatus(ApplicationConstant.SH);
                                 break;
 
-                            case "prematch":
+                            case PREMATCH:
                                 fixture.setMatchStatus(ApplicationConstant.PM);
                         }
 

@@ -14,6 +14,7 @@ import com.binodnme.epl.R;
 import com.binodnme.epl.activity.MatchDetailsActivity;
 import com.binodnme.epl.constants.ApplicationConstant;
 import com.binodnme.epl.model.Fixture;
+import com.binodnme.epl.utils.DateUtils;
 import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public TextView homeTeamName;
         public ImageView awayTeamLogo;
         public TextView awayTeamName;
-
+        public TextView matchDate;
 
         public FixturePreMatchViewHolder(View itemView) {
             super(itemView);
@@ -58,6 +59,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             awayTeamLogo = (ImageView) itemView.findViewById(R.id.away_team_logo);
             homeTeamName = (TextView) itemView.findViewById(R.id.home_team_name);
             awayTeamName = (TextView) itemView.findViewById(R.id.away_team_name);
+            matchDate = (TextView) itemView.findViewById(R.id.match_date);
         }
     }
 
@@ -131,7 +133,9 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             int awayTeamScore = fixture.getAwayTeamScore();
             fcvh.homeTeamScore.setText( homeTeamScore <0 ? "" : String.valueOf(homeTeamScore));
             fcvh.awayTeamScore.setText( awayTeamScore <0 ? "" : String.valueOf(awayTeamScore));
-//            fcvh.matchDate.setText("FT\n"+fixture.getMatchDate().toLowerCase());
+            String requiredDateFormat = "MMM d";
+            String matchDate = DateUtils.getDateString(fixture.getMatchDate(), requiredDateFormat);
+            fcvh.matchDate.setText("FT\n"+matchDate);
 
             Context context = fcvh.homeTeamLogo.getContext();
             int id = getResourceId(context, fixture.getHomeTeamName());
@@ -154,6 +158,11 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Fixture fixture = dataSet.get(position);
             fpmvh.homeTeamName.setText(fixture.getHomeTeamName());
             fpmvh.awayTeamName.setText(fixture.getAwayTeamName());
+
+            String requiredDateFormat = "EEE, d MMM HH:mm";
+            String matchDate = DateUtils.getDateString(fixture.getMatchDate(), requiredDateFormat);
+
+            fpmvh.matchDate.setText(matchDate);
         }
     }
 

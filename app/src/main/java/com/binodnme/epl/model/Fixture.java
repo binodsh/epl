@@ -11,7 +11,7 @@ public class Fixture {
     private String homeTeamName;
     private long awayTeamId;
     private String awayTeamName;
-    private String matchDate;
+    private Date matchDate;
     private String matchStatus;     //FT=fulltime, HT=halftime, FH=firsthalf, PM=prematch
     private int homeTeamScore;
     private int awayTeamScore;
@@ -56,11 +56,11 @@ public class Fixture {
         this.awayTeamName = awayTeamName;
     }
 
-    public String getMatchDate() {
+    public Date getMatchDate() {
         return matchDate;
     }
 
-    public void setMatchDate(String matchDate) {
+    public void setMatchDate(Date matchDate) {
         this.matchDate = matchDate;
     }
 
