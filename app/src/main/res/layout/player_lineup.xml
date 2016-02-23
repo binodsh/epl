@@ -17,9 +17,9 @@
             android:layout_weight="1"
             android:gravity="center_vertical">
             <TextView
+                android:id="@+id/player_home"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="11 A. Lora"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -29,9 +29,9 @@
             android:layout_weight="1"
             android:gravity="center_vertical">
             <TextView
+                android:id="@+id/player_away"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="A.Vidal 22"
                 android:gravity="right"/>
         </LinearLayout>
     </LinearLayout>

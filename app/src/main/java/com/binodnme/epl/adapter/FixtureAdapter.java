@@ -2,6 +2,8 @@ package com.binodnme.epl.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +24,11 @@ import java.util.List;
 /**
  * Created by binodnme on 2/16/16.
  */
-public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements StickyRecyclerHeadersAdapter{
+public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private static final int MATCH_COMPLETE = 0;
     private static final int MATCH_LIVE = 1;
     private static final int MATCH_UPCOMING = 2;
+    private static final int MATCH_POSTPONED = 3;
 
     private List<Fixture> dataSet;
 
@@ -73,7 +76,6 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public TextView awayTeamScore;
         public TextView matchDate;
 
-
         public FixtureCompleteViewHolder(View itemView) {
             super(itemView);
             linearLayout = (LinearLayout) itemView;
@@ -87,6 +89,29 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
+    public static class FixtureLiveViewHolder extends RecyclerView.ViewHolder {
+        public LinearLayout linearLayout;
+        public ImageView homeTeamLogo;
+        public TextView homeTeamName;
+        public ImageView awayTeamLogo;
+        public TextView awayTeamName;
+        public TextView homeTeamScore;
+        public TextView awayTeamScore;
+        public TextView matchStatus;
+
+        public FixtureLiveViewHolder(View itemView) {
+            super(itemView);
+            linearLayout = (LinearLayout) itemView;
+            homeTeamLogo = (ImageView) itemView.findViewById(R.id.team_home_logo);
+            awayTeamLogo = (ImageView) itemView.findViewById(R.id.team_away_logo);
+            homeTeamName = (TextView) itemView.findViewById(R.id.team_home_name);
+            awayTeamName = (TextView) itemView.findViewById(R.id.team_away_name);
+            homeTeamScore = (TextView) itemView.findViewById(R.id.team_home_score);
+            awayTeamScore = (TextView) itemView.findViewById(R.id.team_away_score);
+            matchStatus = (TextView) itemView.findViewById(R.id.match_status    );
+        }
+    }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -96,9 +121,12 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if(viewType == MATCH_COMPLETE){
             v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture_complete, parent, false);
             vh = new FixtureCompleteViewHolder(v);
-        }else {
+        }else if(viewType == MATCH_UPCOMING){
             v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture_upcoming, parent, false);
             vh = new FixturePreMatchViewHolder(v);
+        }else{
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture_live, parent, false);
+            vh = new FixtureLiveViewHolder(v);
         }
 
         return vh;
@@ -108,11 +136,14 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getItemViewType(int position) {
         String matchStatus = dataSet.get(position).getMatchStatus().toUpperCase();
         switch (matchStatus){
-            case "FT":
+            case ApplicationConstant.FT:
                 return MATCH_COMPLETE;
 
-            case "PM":
+            case ApplicationConstant.PM:
                 return MATCH_UPCOMING;
+
+            case ApplicationConstant.PP:
+                return  MATCH_POSTPONED;
 
             default:
                 return MATCH_LIVE;
@@ -125,7 +156,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         if(matchStatus.equalsIgnoreCase(ApplicationConstant.FT)){
             FixtureCompleteViewHolder fcvh = (FixtureCompleteViewHolder) holder;
-            Fixture fixture = dataSet.get(position);
+            final Fixture fixture = dataSet.get(position);
             fcvh.homeTeamName.setText(fixture.getHomeTeamName());
             fcvh.awayTeamName.setText(fixture.getAwayTeamName());
 
@@ -150,12 +181,15 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), MatchDetailsActivity.class);
+                    Bundle args = new Bundle();
+                    args.putSerializable("fixture", fixture);
+                    intent.putExtras(args);
                     v.getContext().startActivity(intent);
                 }
             });
         }else if(matchStatus.equalsIgnoreCase(ApplicationConstant.PM)){
             FixturePreMatchViewHolder fpmvh = (FixturePreMatchViewHolder) holder;
-            Fixture fixture = dataSet.get(position);
+            final Fixture fixture = dataSet.get(position);
             fpmvh.homeTeamName.setText(fixture.getHomeTeamName());
             fpmvh.awayTeamName.setText(fixture.getAwayTeamName());
 
@@ -163,42 +197,92 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             String matchDate = DateUtils.getDateString(fixture.getMatchDate(), requiredDateFormat);
 
             fpmvh.matchDate.setText(matchDate);
+
+            Context context = fpmvh.homeTeamLogo.getContext();
+            int id = getResourceId(context, fixture.getHomeTeamName());
+            fpmvh.homeTeamLogo.setImageResource(id == 0 ? R.mipmap.ic_launcher : id);
+
+            Context context1 = fpmvh.awayTeamLogo.getContext();
+            int id1 = getResourceId(context1, fixture.getAwayTeamName());
+            fpmvh.awayTeamLogo.setImageResource(id1 == 0 ? R.mipmap.ic_launcher : id1);
+
+
+            fpmvh.linearLayout.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), MatchDetailsActivity.class);
+                    Bundle args = new Bundle();
+                    args.putSerializable("fixture", fixture);
+                    intent.putExtras(args);
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }else{
+            FixtureLiveViewHolder flvh = (FixtureLiveViewHolder) holder;
+            final Fixture fixture = dataSet.get(position);
+            flvh.homeTeamName.setText(fixture.getHomeTeamName());
+            flvh.awayTeamName.setText(fixture.getAwayTeamName());
+
+            int homeTeamScore = fixture.getHomeTeamScore();
+            int awayTeamScore = fixture.getAwayTeamScore();
+            flvh.homeTeamScore.setText( homeTeamScore <0 ? "" : String.valueOf(homeTeamScore));
+            flvh.awayTeamScore.setText( awayTeamScore <0 ? "" : String.valueOf(awayTeamScore));
+
+
+            Context context = flvh.homeTeamLogo.getContext();
+            int id = getResourceId(context, fixture.getHomeTeamName());
+            flvh.homeTeamLogo.setImageResource(id == 0 ? R.mipmap.ic_launcher : id);
+
+            Context context1 = flvh.awayTeamLogo.getContext();
+            int id1 = getResourceId(context1, fixture.getAwayTeamName());
+            flvh.awayTeamLogo.setImageResource(id1 == 0 ? R.mipmap.ic_launcher : id1);
+
+
+            switch (fixture.getMatchStatus().toUpperCase()){
+                case ApplicationConstant.FH:
+                    flvh.matchStatus.setText("first half");
+                    break;
+
+                case ApplicationConstant.SH:
+                    flvh.matchStatus.setText("second half");
+                    break;
+
+                case ApplicationConstant.HT:
+                    flvh.matchStatus.setText("half time");
+                    break;
+
+                case ApplicationConstant.PP:
+                    flvh.matchStatus.setText("postponed");
+                    flvh.matchStatus.setTextColor(Color.parseColor("#ff0000"));
+                    break;
+                default:
+                    flvh.matchStatus.setText("live");
+            }
+
+            flvh.linearLayout.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), MatchDetailsActivity.class);
+                    Bundle args = new Bundle();
+                    args.putSerializable("fixture", fixture);
+                    intent.putExtras(args);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 
 
     @Override
-    public long getHeaderId(int position) {
-//        return position%3 == 0 ? position : -1;
-        return -1;
-    }
-
-    @Override
-    public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup parent) {
-        View v;
-        RecyclerView.ViewHolder vh ;
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fixture_match_day, parent, false);
-        vh = new FixturePreMatchViewHolder(v);
-
-        return vh;
-    }
-
-    @Override
-    public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-
-    }
-
-    @Override
     public int getItemCount() {
-//        return dataSet.length;
         return dataSet.size();
     }
 
 
     public int getResourceId(Context context, String name){
         name = name.toLowerCase().replace(' ','_');
-
         return context.getResources().getIdentifier(name, "drawable", context.getPackageName());
     }
 }

@@ -1,18 +1,19 @@
 package com.binodnme.epl.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by binodnme on 2/19/16.
  */
-public class Fixture {
+public class Fixture implements Serializable{
     private long matchId;
     private long homeTeamId;
     private String homeTeamName;
     private long awayTeamId;
     private String awayTeamName;
     private Date matchDate;
-    private String matchStatus;     //FT=fulltime, HT=halftime, FH=firsthalf, PM=prematch
+    private String matchStatus;     //FT=fulltime, HT=halftime, FH=firsthalf, SH=secondhalf PM=prematch
     private int homeTeamScore;
     private int awayTeamScore;
 

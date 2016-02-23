@@ -13,13 +13,14 @@ import com.binodnme.epl.R;
 import com.binodnme.epl.adapter.StandingsAdapter;
 import com.binodnme.epl.model.ClubStanding;
 import com.binodnme.epl.model.PremierLeague;
+import com.binodnme.epl.rest.onefootball.OneFootball;
 
 import java.util.List;
 
 /**
  * Created by binodnme on 2/16/16.
  */
-public class StandingsFragment extends Fragment {
+public class StandingsFragment extends Fragment implements OneFootball.StandingsInterface {
     private RecyclerView mRecycler;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -37,11 +38,22 @@ public class StandingsFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecycler.setLayoutManager(mLayoutManager);
 
-        List<ClubStanding> clubStandings = PremierLeague.getCurrentStanding(getActivity());
+        OneFootball.setStandingsListener(this);
 
+        PremierLeague.fetchCurrentStanding(getActivity());
+
+        return rootView;
+
+    }
+
+    @Override
+    public void onSuccess(List<ClubStanding> clubStandings) {
         mAdapter = new StandingsAdapter(clubStandings);
         mRecycler.setAdapter(mAdapter);
-        return rootView;
+    }
+
+    @Override
+    public void onFailure() {
 
     }
 }

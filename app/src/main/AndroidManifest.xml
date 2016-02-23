@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.binodnme.epl">
 
+
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +14,9 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/premier_league"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,7 +25,9 @@
         <activity
             android:name=".activity.MatchDetailsActivity"
             android:label="@string/title_activity_match_details"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

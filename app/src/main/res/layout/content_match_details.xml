@@ -10,14 +10,25 @@
     tools:showIn="@layout/activity_match_details">
 
     <LinearLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/match_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
         <TextView
+            android:id="@+id/match_date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sat, 2/27, 8:45 PM"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -33,23 +44,23 @@
             android:gravity="center"
             android:layout_weight="3">
             <ImageView
+                android:id="@+id/team_home_logo"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:src="@drawable/manchester_city"/>
+                android:layout_height="75dp" />
 
             <TextView
+                android:id="@+id/team_home_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Manchester City"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/match_score"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:textAlignment="center"
-            android:text="vs"/>
+            android:textAlignment="center" />
 
         <LinearLayout
             android:id="@+id/team_away"
@@ -59,14 +70,14 @@
             android:gravity="center"
             android:layout_weight="3">
             <ImageView
+                android:id="@+id/team_away_logo"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:src="@drawable/manchester_utd"/>
+                android:layout_height="75dp" />
 
             <TextView
+                android:id="@+id/team_away_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Man United"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </LinearLayout>

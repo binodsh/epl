@@ -1,0 +1,1098 @@
+{
+  "meta": {
+    "competitionId": "10",
+    "seasonId": "1257",
+    "matchdayId": "5663591",
+    "iconSrc": "https://images.onefootball.com/icons/56/%@.png"
+  },
+  "kickoffs": [
+    {
+      "kickoff": "2016-02-19T19:30:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446328",
+              "matchIdOpta": "",
+              "period": "FullTime",
+              "minute": 93,
+              "scorehome": 3,
+              "scoreaway": 0,
+              "scorehomefirsthalf": 2,
+              "scoreawayfirsthalf": 0,
+              "attendance": 13665,
+              "stadium": {
+                "id": "239",
+                "name": "Ciutat de Valencia",
+                "city": "Valencia",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "709",
+                "name": "José Luis González González"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "218",
+                "name": "Levante"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "216",
+                "name": "Getafe"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "431784740291",
+                  "type": "Yellow",
+                  "minute": "42",
+                  "player": {
+                    "id": 41166,
+                    "name": "Santiago Vergini",
+                    "teamId": null,
+                    "internalTeamId": "216"
+                  }
+                },
+                {
+                  "eventId": "578521140369",
+                  "type": "Yellow",
+                  "minute": "46",
+                  "player": {
+                    "id": 54794,
+                    "name": "Deyverson",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                },
+                {
+                  "eventId": "709336434904",
+                  "type": "Yellow",
+                  "minute": "46",
+                  "player": {
+                    "id": 12488,
+                    "name": "Vicente Guaita",
+                    "teamId": null,
+                    "internalTeamId": "216"
+                  }
+                },
+                {
+                  "eventId": "999392140243",
+                  "type": "Yellow",
+                  "minute": "68",
+                  "player": {
+                    "id": 12175,
+                    "name": "Verza",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "386920296202",
+                  "type": "Goal",
+                  "minute": 10,
+                  "period": "FirstHalf",
+                  "score": "1:0",
+                  "teamId": "218",
+                  "player": {
+                    "id": 50802,
+                    "name": "Morales",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                },
+                {
+                  "eventId": "335994280405",
+                  "type": "Penalty",
+                  "minute": 43,
+                  "period": "FirstHalf",
+                  "score": "2:0",
+                  "teamId": "218",
+                  "player": {
+                    "id": 1349,
+                    "name": "Giuseppe Rossi",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                },
+                {
+                  "eventId": "820662816961",
+                  "type": "Goal",
+                  "minute": 81,
+                  "period": "SecondHalf",
+                  "score": "3:0",
+                  "teamId": "218",
+                  "player": {
+                    "id": 3507,
+                    "name": "Joan Verdú",
+                    "teamId": null,
+                    "internalTeamId": "218"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-20T15:00:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446327",
+              "matchIdOpta": "",
+              "period": "FullTime",
+              "minute": 94,
+              "scorehome": 1,
+              "scoreaway": 2,
+              "scorehomefirsthalf": 1,
+              "scoreawayfirsthalf": 2,
+              "attendance": 26951,
+              "stadium": {
+                "id": "615",
+                "name": "Gran Canaria",
+                "city": "Las Palmas de Gran Canaria",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "686",
+                "name": "Carlos Del Cerro Grande"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "687",
+                "name": "Las Palmas"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "5",
+                "name": "Barcelona"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "331035279501",
+                  "type": "Yellow",
+                  "minute": "33",
+                  "player": {
+                    "id": 5360,
+                    "name": "Arda Turan",
+                    "teamId": null,
+                    "internalTeamId": "5"
+                  }
+                },
+                {
+                  "eventId": "898861291878",
+                  "type": "Yellow",
+                  "minute": "84",
+                  "player": {
+                    "id": 29516,
+                    "name": "Roque",
+                    "teamId": null,
+                    "internalTeamId": "687"
+                  }
+                },
+                {
+                  "eventId": "525476687257",
+                  "type": "Yellow",
+                  "minute": "86",
+                  "player": {
+                    "id": 147,
+                    "name": "Dani Alves",
+                    "teamId": null,
+                    "internalTeamId": "5"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "11226746524",
+                  "type": "Goal",
+                  "minute": 6,
+                  "period": "FirstHalf",
+                  "score": "0:1",
+                  "teamId": "5",
+                  "player": {
+                    "id": 1708,
+                    "name": "Luis Suárez",
+                    "teamId": null,
+                    "internalTeamId": "5"
+                  }
+                },
+                {
+                  "eventId": "932072005394",
+                  "type": "Goal",
+                  "minute": 10,
+                  "period": "FirstHalf",
+                  "score": "1:1",
+                  "teamId": "687",
+                  "player": {
+                    "id": 41006,
+                    "name": "Willian José",
+                    "teamId": null,
+                    "internalTeamId": "687"
+                  }
+                },
+                {
+                  "eventId": "1057880047091",
+                  "type": "Goal",
+                  "minute": 39,
+                  "period": "FirstHalf",
+                  "score": "1:2",
+                  "teamId": "5",
+                  "player": {
+                    "id": 19515,
+                    "name": "Neymar",
+                    "teamId": null,
+                    "internalTeamId": "5"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-20T17:15:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446325",
+              "matchIdOpta": "",
+              "period": "FullTime",
+              "minute": 95,
+              "scorehome": 1,
+              "scoreaway": 0,
+              "scorehomefirsthalf": 0,
+              "scoreawayfirsthalf": 0,
+              "attendance": 28455,
+              "stadium": {
+                "id": "189",
+                "name": "RCDE Stadium",
+                "city": "Barcelona",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "740",
+                "name": "Ricardo de Burgos Bengoetxea"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "215",
+                "name": "Espanyol"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "214",
+                "name": "Deportivo"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "983416729464",
+                  "type": "Yellow",
+                  "minute": "19",
+                  "player": {
+                    "id": 58940,
+                    "name": "Marco Asensio",
+                    "teamId": null,
+                    "internalTeamId": "215"
+                  }
+                },
+                {
+                  "eventId": "86289370842",
+                  "type": "Yellow",
+                  "minute": "47",
+                  "player": {
+                    "id": 12451,
+                    "name": "Alejandro Arribas",
+                    "teamId": null,
+                    "internalTeamId": "214"
+                  }
+                },
+                {
+                  "eventId": "870723550585",
+                  "type": "Yellow",
+                  "minute": "57",
+                  "player": {
+                    "id": 6454,
+                    "name": "Víctor Sánchez",
+                    "teamId": null,
+                    "internalTeamId": "215"
+                  }
+                },
+                {
+                  "eventId": "135462021363",
+                  "type": "Yellow",
+                  "minute": "93",
+                  "player": {
+                    "id": 1899,
+                    "name": "Felipe Caicedo",
+                    "teamId": null,
+                    "internalTeamId": "215"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "467684460152",
+                  "type": "Goal",
+                  "minute": 52,
+                  "period": "SecondHalf",
+                  "score": "1:0",
+                  "teamId": "215",
+                  "player": {
+                    "id": 58940,
+                    "name": "Marco Asensio",
+                    "teamId": null,
+                    "internalTeamId": "215"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-20T19:30:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446331",
+              "matchIdOpta": "",
+              "period": "FullTime",
+              "minute": 94,
+              "scorehome": 1,
+              "scoreaway": 1,
+              "scorehomefirsthalf": 0,
+              "scoreawayfirsthalf": 0,
+              "attendance": 41345,
+              "stadium": {
+                "id": "90",
+                "name": "Benito Villamarín",
+                "city": "Sevilla",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "692",
+                "name": "Alfonso Javier Álvarez Izquierdo"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "691",
+                "name": "Real Betis"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "225",
+                "name": "Sporting de Gijón"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "197685582218",
+                  "type": "Yellow",
+                  "minute": "32",
+                  "player": {
+                    "id": 14534,
+                    "name": "Martín Montoya",
+                    "teamId": null,
+                    "internalTeamId": "691"
+                  }
+                },
+                {
+                  "eventId": "524485336921",
+                  "type": "Yellow",
+                  "minute": "37",
+                  "player": {
+                    "id": 4017,
+                    "name": "Sergio Álvarez",
+                    "teamId": null,
+                    "internalTeamId": "225"
+                  }
+                },
+                {
+                  "eventId": "653637044996",
+                  "type": "Yellow",
+                  "minute": "60",
+                  "player": {
+                    "id": 28871,
+                    "name": "Isma López",
+                    "teamId": null,
+                    "internalTeamId": "225"
+                  }
+                },
+                {
+                  "eventId": "276416537852",
+                  "type": "Yellow",
+                  "minute": "81",
+                  "player": {
+                    "id": 7791,
+                    "name": "Ognjen Vranjes",
+                    "teamId": null,
+                    "internalTeamId": "225"
+                  }
+                },
+                {
+                  "eventId": "451489125529",
+                  "type": "Yellow",
+                  "minute": "87",
+                  "player": {
+                    "id": 4972,
+                    "name": "Alfred N'Diaye",
+                    "teamId": null,
+                    "internalTeamId": "691"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "399871912809",
+                  "type": "Goal",
+                  "minute": 65,
+                  "period": "SecondHalf",
+                  "score": "0:1",
+                  "teamId": "225",
+                  "player": {
+                    "id": 82153,
+                    "name": "Castro",
+                    "teamId": null,
+                    "internalTeamId": "225"
+                  }
+                },
+                {
+                  "eventId": "980930519325",
+                  "type": "Goal",
+                  "minute": 67,
+                  "period": "SecondHalf",
+                  "score": "1:1",
+                  "teamId": "691",
+                  "player": {
+                    "id": 45455,
+                    "name": "Germán Pezzella",
+                    "teamId": null,
+                    "internalTeamId": "691"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-20T21:05:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446324",
+              "matchIdOpta": "",
+              "period": "FullTime",
+              "minute": 93,
+              "scorehome": 3,
+              "scoreaway": 2,
+              "scorehomefirsthalf": 2,
+              "scoreawayfirsthalf": 0,
+              "attendance": 14724,
+              "stadium": {
+                "id": "91",
+                "name": "Balaídos",
+                "city": "Pontevedra",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "758",
+                "name": "Mario Melero Lopez"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "680",
+                "name": "Celta de Vigo"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "1248",
+                "name": "Eibar"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "282356850528",
+                  "type": "Yellow",
+                  "minute": "20",
+                  "player": {
+                    "id": 4056,
+                    "name": "Lillo",
+                    "teamId": null,
+                    "internalTeamId": "1248"
+                  }
+                },
+                {
+                  "eventId": "691318587519",
+                  "type": "Yellow",
+                  "minute": "26",
+                  "player": {
+                    "id": 19034,
+                    "name": "Pablo Hernández",
+                    "teamId": null,
+                    "internalTeamId": "680"
+                  }
+                },
+                {
+                  "eventId": "873124965213",
+                  "type": "Yellow",
+                  "minute": "51",
+                  "player": {
+                    "id": 38623,
+                    "name": "Ander Capa",
+                    "teamId": null,
+                    "internalTeamId": "1248"
+                  }
+                },
+                {
+                  "eventId": "113390411633",
+                  "type": "Yellow",
+                  "minute": "82",
+                  "player": {
+                    "id": 12625,
+                    "name": "Sergi Gómez",
+                    "teamId": null,
+                    "internalTeamId": "680"
+                  }
+                },
+                {
+                  "eventId": "623199274250",
+                  "type": "Yellow",
+                  "minute": "92",
+                  "player": {
+                    "id": 12632,
+                    "name": "Nolito",
+                    "teamId": null,
+                    "internalTeamId": "680"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "415299421306",
+                  "type": "Goal",
+                  "minute": 31,
+                  "period": "FirstHalf",
+                  "score": "1:0",
+                  "teamId": "680",
+                  "player": {
+                    "id": 17220,
+                    "name": "Guidetti",
+                    "teamId": null,
+                    "internalTeamId": "680"
+                  }
+                },
+                {
+                  "eventId": "248809614115",
+                  "type": "Goal",
+                  "minute": 39,
+                  "period": "FirstHalf",
+                  "score": "2:0",
+                  "teamId": "680",
+                  "player": {
+                    "id": 30912,
+                    "name": "Jonny",
+                    "teamId": null,
+                    "internalTeamId": "680"
+                  }
+                },
+                {
+                  "eventId": "846599971985",
+                  "type": "Goal",
+                  "minute": 69,
+                  "period": "SecondHalf",
+                  "score": "3:0",
+                  "teamId": "680",
+                  "player": {
+                    "id": 17220,
+                    "name": "Guidetti",
+                    "teamId": null,
+                    "internalTeamId": "680"
+                  }
+                },
+                {
+                  "eventId": "620238449283",
+                  "type": "Penalty",
+                  "minute": 84,
+                  "period": "SecondHalf",
+                  "score": "3:1",
+                  "teamId": "1248",
+                  "player": {
+                    "id": 12376,
+                    "name": "Saúl Berjón",
+                    "teamId": null,
+                    "internalTeamId": "1248"
+                  }
+                },
+                {
+                  "eventId": "381336439376",
+                  "type": "Goal",
+                  "minute": 87,
+                  "period": "SecondHalf",
+                  "score": "3:2",
+                  "teamId": "1248",
+                  "player": {
+                    "id": 22639,
+                    "name": "Takashi Inui",
+                    "teamId": null,
+                    "internalTeamId": "1248"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-21T11:00:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446330",
+              "matchIdOpta": "",
+              "period": "FullTime",
+              "minute": 94,
+              "scorehome": 2,
+              "scoreaway": 2,
+              "scorehomefirsthalf": 1,
+              "scoreawayfirsthalf": 2,
+              "attendance": 12375,
+              "stadium": {
+                "id": "627",
+                "name": "Campo de Fútbol de Vallecas",
+                "city": "Madrid",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "760",
+                "name": "Javier Estrada Fernandez"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "690",
+                "name": "Rayo Vallecano"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "28",
+                "name": "Sevilla FC"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "238055398784",
+                  "type": "Yellow",
+                  "minute": "16",
+                  "player": {
+                    "id": 3517,
+                    "name": "Raúl Baena",
+                    "teamId": null,
+                    "internalTeamId": "690"
+                  }
+                },
+                {
+                  "eventId": "66418571357",
+                  "type": "Yellow",
+                  "minute": "44",
+                  "player": {
+                    "id": 42059,
+                    "name": "Jozabed",
+                    "teamId": null,
+                    "internalTeamId": "690"
+                  }
+                },
+                {
+                  "eventId": "387768386738",
+                  "type": "Yellow",
+                  "minute": "57",
+                  "player": {
+                    "id": 3551,
+                    "name": "Miku",
+                    "teamId": null,
+                    "internalTeamId": "690"
+                  }
+                },
+                {
+                  "eventId": "85081475946",
+                  "type": "Yellow",
+                  "minute": "59",
+                  "player": {
+                    "id": 12425,
+                    "name": "Coke",
+                    "teamId": null,
+                    "internalTeamId": "28"
+                  }
+                },
+                {
+                  "eventId": "856354433507",
+                  "type": "Yellow",
+                  "minute": "64",
+                  "player": {
+                    "id": 55929,
+                    "name": "Adrián Embarba",
+                    "teamId": null,
+                    "internalTeamId": "690"
+                  }
+                },
+                {
+                  "eventId": "791661695407",
+                  "type": "Yellow",
+                  "minute": "75",
+                  "player": {
+                    "id": 40247,
+                    "name": "Diego Llorente",
+                    "teamId": null,
+                    "internalTeamId": "690"
+                  }
+                },
+                {
+                  "eventId": "445259746802",
+                  "type": "Yellow",
+                  "minute": "91",
+                  "player": {
+                    "id": 4026,
+                    "name": "Éver Banega",
+                    "teamId": null,
+                    "internalTeamId": "28"
+                  }
+                },
+                {
+                  "eventId": "844204472143",
+                  "type": "Yellow",
+                  "minute": "93",
+                  "player": {
+                    "id": 4030,
+                    "name": "Pablo Hernández",
+                    "teamId": null,
+                    "internalTeamId": "690"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "207307948918",
+                  "type": "Goal",
+                  "minute": 10,
+                  "period": "FirstHalf",
+                  "score": "0:1",
+                  "teamId": "28",
+                  "player": {
+                    "id": 2905,
+                    "name": "Steven N'Zonzi",
+                    "teamId": null,
+                    "internalTeamId": "28"
+                  }
+                },
+                {
+                  "eventId": "81803776187",
+                  "type": "Goal",
+                  "minute": 20,
+                  "period": "FirstHalf",
+                  "score": "0:2",
+                  "teamId": "28",
+                  "player": {
+                    "id": 3612,
+                    "name": "Vicente Iborra",
+                    "teamId": null,
+                    "internalTeamId": "28"
+                  }
+                },
+                {
+                  "eventId": "535056120401",
+                  "type": "Goal",
+                  "minute": 43,
+                  "period": "FirstHalf",
+                  "score": "1:2",
+                  "teamId": "690",
+                  "player": {
+                    "id": 1753,
+                    "name": "Manucho",
+                    "teamId": null,
+                    "internalTeamId": "690"
+                  }
+                },
+                {
+                  "eventId": "721855289123",
+                  "type": "Goal",
+                  "minute": 62,
+                  "period": "SecondHalf",
+                  "score": "2:2",
+                  "teamId": "690",
+                  "player": {
+                    "id": 3551,
+                    "name": "Miku",
+                    "teamId": null,
+                    "internalTeamId": "690"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-21T15:00:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446329",
+              "matchIdOpta": "",
+              "period": "HalfTime",
+              "minute": 46,
+              "scorehome": 0,
+              "scoreaway": 1,
+              "scorehomefirsthalf": 0,
+              "scoreawayfirsthalf": 1,
+              "attendance": 0,
+              "stadium": {
+                "id": "86",
+                "name": "La Rosaleda",
+                "city": "Málaga",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "762",
+                "name": "Ignacio Iglesias Villanueva"
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "219",
+                "name": "Málaga"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "26",
+                "name": "Real Madrid"
+              },
+              "hasLiveTicker": true,
+              "cards": [
+                {
+                  "eventId": "335854150604",
+                  "type": "Yellow",
+                  "minute": "2",
+                  "player": {
+                    "id": 3549,
+                    "name": "Miguel Torres",
+                    "teamId": null,
+                    "internalTeamId": "219"
+                  }
+                },
+                {
+                  "eventId": "677553098014",
+                  "type": "Yellow",
+                  "minute": "24",
+                  "player": {
+                    "id": 810,
+                    "name": "Marcelo",
+                    "teamId": null,
+                    "internalTeamId": "26"
+                  }
+                },
+                {
+                  "eventId": "913162307152",
+                  "type": "Yellow",
+                  "minute": "35",
+                  "player": {
+                    "id": 3658,
+                    "name": "Weligton",
+                    "teamId": null,
+                    "internalTeamId": "219"
+                  }
+                },
+                {
+                  "eventId": "551487432999",
+                  "type": "Yellow",
+                  "minute": "41",
+                  "player": {
+                    "id": 14539,
+                    "name": "Charles",
+                    "teamId": null,
+                    "internalTeamId": "219"
+                  }
+                }
+              ],
+              "goals": [
+                {
+                  "eventId": "538301501701",
+                  "type": "Goal",
+                  "minute": 33,
+                  "period": "FirstHalf",
+                  "score": "0:1",
+                  "teamId": "26",
+                  "player": {
+                    "id": 823,
+                    "name": "Cristiano Ronaldo",
+                    "teamId": null,
+                    "internalTeamId": "26"
+                  }
+                }
+              ],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-21T17:15:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446322",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "2012",
+                "name": "San Mamés",
+                "city": "Bilbao",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "213",
+                "name": "Athletic Club"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "223",
+                "name": "R. Sociedad"
+              },
+              "hasLiveTicker": false,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            },
+            {
+              "matchId": "446326",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "626",
+                "name": "Los Cármenes",
+                "city": "Granada",
+                "country": "Spain",
+                "countryCode": "ES"
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "686",
+                "name": "Granada CF"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "143",
+                "name": "Valencia CF"
+              },
+              "hasLiveTicker": true,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kickoff": "2016-02-21T19:30:00Z",
+      "groups": [
+        {
+          "matches": [
+            {
+              "matchId": "446323",
+              "matchIdOpta": "",
+              "period": "PreMatch",
+              "minute": 0,
+              "scorehome": -1,
+              "scoreaway": -1,
+              "attendance": 0,
+              "stadium": {
+                "id": "",
+                "name": "",
+                "city": "",
+                "country": "",
+                "countryCode": ""
+              },
+              "referee": {
+                "id": "",
+                "name": ""
+              },
+              "teamhome": {
+                "id": "",
+                "idInternal": "3",
+                "name": "Atlético Madrid"
+              },
+              "teamaway": {
+                "id": "",
+                "idInternal": "226",
+                "name": "Villarreal"
+              },
+              "hasLiveTicker": true,
+              "cards": [],
+              "goals": [],
+              "hasPreLiminary": false,
+              "hasPostLiminary": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
