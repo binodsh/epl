@@ -2,15 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/spinner_text"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:paddingLeft="20dp"
-
+        android:layout_weight="5"
         android:textSize="16sp"
+        android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:text="Matchday 1"/>
+
+    <ImageView
+        android:id="@+id/current_matchday_ticker"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="0.5"
+        android:visibility="invisible"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_live_indicator"/>
 </LinearLayout>

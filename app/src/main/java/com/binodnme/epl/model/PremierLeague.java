@@ -2,7 +2,6 @@ package com.binodnme.epl.model;
 
 import android.content.Context;
 
-
 import com.binodnme.epl.rest.onefootball.OneFootball;
 
 import java.util.List;
@@ -22,15 +21,15 @@ public class PremierLeague {
     }
 
     public static void fetchCurrentStanding(Context context){
-        OneFootball.fetchStandings(context);
+        OneFootball.fetchStandings();
     }
 
     public static void getFixtures(Context context, long matchDayId){
-        OneFootball.fetchFixtures(context, matchDayId);
+        OneFootball.fetchFixtures(matchDayId);
     }
 
     public static void getMatchDetail(Context context, Fixture fixture){
-        OneFootball.getMatchDetail(context, fixture);
+        OneFootball.getMatchDetail(fixture);
     }
 
     public static void setFixtures(List<Fixture> f) {

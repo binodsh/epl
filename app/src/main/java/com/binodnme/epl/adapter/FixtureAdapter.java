@@ -17,7 +17,6 @@ import com.binodnme.epl.activity.MatchDetailsActivity;
 import com.binodnme.epl.constants.ApplicationConstant;
 import com.binodnme.epl.model.Fixture;
 import com.binodnme.epl.utils.DateUtils;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
 
 import java.util.List;
 
@@ -30,21 +29,12 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private static final int MATCH_UPCOMING = 2;
     private static final int MATCH_POSTPONED = 3;
 
+    public static final String FIXTURE = "fixture";
+
     private List<Fixture> dataSet;
-
-    public FixtureAdapter(){
-
-    }
 
     public FixtureAdapter(List<Fixture> ds){
         this.dataSet = ds;
-    }
-
-    public static class MatchDayTitleViewHolder extends RecyclerView.ViewHolder{
-
-        public MatchDayTitleViewHolder(View itemView) {
-            super(itemView);
-        }
     }
 
     public static class FixturePreMatchViewHolder extends RecyclerView.ViewHolder{
@@ -182,11 +172,12 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), MatchDetailsActivity.class);
                     Bundle args = new Bundle();
-                    args.putSerializable("fixture", fixture);
+                    args.putSerializable(FIXTURE, fixture);
                     intent.putExtras(args);
                     v.getContext().startActivity(intent);
                 }
             });
+
         }else if(matchStatus.equalsIgnoreCase(ApplicationConstant.PM)){
             FixturePreMatchViewHolder fpmvh = (FixturePreMatchViewHolder) holder;
             final Fixture fixture = dataSet.get(position);
@@ -213,11 +204,12 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), MatchDetailsActivity.class);
                     Bundle args = new Bundle();
-                    args.putSerializable("fixture", fixture);
+                    args.putSerializable(FIXTURE, fixture);
                     intent.putExtras(args);
                     v.getContext().startActivity(intent);
                 }
             });
+
         }else{
             FixtureLiveViewHolder flvh = (FixtureLiveViewHolder) holder;
             final Fixture fixture = dataSet.get(position);
@@ -266,7 +258,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), MatchDetailsActivity.class);
                     Bundle args = new Bundle();
-                    args.putSerializable("fixture", fixture);
+                    args.putSerializable(FIXTURE, fixture);
                     intent.putExtras(args);
                     v.getContext().startActivity(intent);
                 }

@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_weight="3"
         android:background="@color/white"
         android:gravity="center_vertical"
@@ -21,18 +21,47 @@
         android:paddingRight="16dp">
 
         <ImageView
+            android:id="@+id/event_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/yellow_card" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="3"
-            android:gravity="end"
-            android:text="Messi 87'" />
+            android:orientation="vertical"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:text="Messi" />
 
+            <TextView
+                android:id="@+id/event_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="11dp"
+                android:textColor="@color/colorDivider"
+                android:text="Messi" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/event_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_weight="1"
+            android:textSize="12dp"
+            android:text="77"/>
 
     </LinearLayout>
 

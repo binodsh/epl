@@ -22,6 +22,8 @@ public class LineupFragment extends Fragment {
     RecyclerView mRecycler;
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

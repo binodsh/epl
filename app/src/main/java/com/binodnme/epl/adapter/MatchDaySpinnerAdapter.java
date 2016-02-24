@@ -3,8 +3,8 @@ package com.binodnme.epl.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,11 +20,10 @@ public class MatchDaySpinnerAdapter extends BaseAdapter {
 
     private List<MatchDay> matchDays;
 
-    public MatchDaySpinnerAdapter(){}
+    public MatchDaySpinnerAdapter() {
+    }
 
-    public MatchDaySpinnerAdapter(List<MatchDay> mds){
-        System.out.println("-----------------size here------------------");
-        System.out.println(mds.size());
+    public MatchDaySpinnerAdapter(List<MatchDay> mds) {
         matchDays = mds;
     }
 
@@ -46,27 +45,36 @@ public class MatchDaySpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        SpinnerViewHolder holder = null;
+        SpinnerViewHolder holder;
 
-        if(view == null){
+        if (view == null) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.match_day_spinner, parent, false);
             holder = new SpinnerViewHolder(view);
             view.setTag(holder);
-        }else{
+        } else {
             holder = (SpinnerViewHolder) view.getTag();
         }
 
         holder.mTextView.setText(matchDays.get(position).getName());
 
+        if(matchDays.get(position).getCurrentMatchDay()){
+            holder.mImageView.setVisibility(View.VISIBLE);
+        }else{
+            holder.mImageView.setVisibility(View.GONE);
+        }
         return view;
     }
 
-    public class SpinnerViewHolder{
+    public class SpinnerViewHolder {
         LinearLayout mLinearLayout;
         TextView mTextView;
-        public SpinnerViewHolder(View itemView){
+        ImageView mImageView;
+
+        public SpinnerViewHolder(View itemView) {
             mLinearLayout = (LinearLayout) itemView;
             mTextView = (TextView) itemView.findViewById(R.id.spinner_text);
+            mImageView = (ImageView) itemView.findViewById(R.id.current_matchday_ticker);
+
         }
     }
 }

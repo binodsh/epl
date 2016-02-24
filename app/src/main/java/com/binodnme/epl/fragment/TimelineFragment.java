@@ -39,15 +39,14 @@ public class TimelineFragment extends Fragment {
         }
 
 
-//        rootView = (ViewGroup) inflater.inflate(R.layout.timeline, container, false);
-        rootView = (ViewGroup) inflater.inflate(R.layout.coming_soon, container, false);
+        rootView = (ViewGroup) inflater.inflate(R.layout.timeline, container, false);
 
-//        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.id_timeline_view);
-//        mLayoutManager = new LinearLayoutManager(getActivity());
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-//
-//        mAdapter = new TimelineAdapter();
-//        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.id_timeline_view);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new TimelineAdapter(matchDetail);
+        mRecyclerView.setAdapter(mAdapter);
 
         return rootView;
     }

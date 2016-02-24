@@ -18,6 +18,7 @@ public class MatchDetail implements Serializable {
     private int awayTeamScore;
     private MatchTeamDetail homeTeam;
     private MatchTeamDetail awayTeam;
+    private List<? extends MatchEvent> matchEvents;
 
     public long getMatchId() {
         return matchId;
@@ -97,5 +98,13 @@ public class MatchDetail implements Serializable {
 
     public void setMinute(int minute) {
         this.minute = minute;
+    }
+
+    public List<? extends MatchEvent> getMatchEvents() {
+        return matchEvents;
+    }
+
+    public void setMatchEvents(List<? extends MatchEvent> matchEvents) {
+        this.matchEvents = matchEvents;
     }
 }

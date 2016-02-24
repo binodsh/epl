@@ -4,15 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.model.MatchDetail;
-import com.binodnme.epl.model.MatchTeamPlayerDetail;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by binodnme on 2/19/16.
@@ -23,7 +18,6 @@ public class LineUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final int VIEW_TYPE_DATA = 2;
     private final int POSITION_SHIFT_FIRST = -1;
     private final int POSITION_SHIFT_SECOND = -13;
-    private int dataIndex =-1;
 
     public LineUpAdapter() {
     }
@@ -55,12 +49,10 @@ public class LineUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(viewType == VIEW_TYPE_DATA) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.player_lineup, parent, false);
-            LineUpsViewHolder lvh = new LineUpsViewHolder(v);
-            return lvh;
+            return new LineUpsViewHolder(v);
         }else{
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lineup_sub_header, parent, false);
-            SubHeaderViewHolder shvh = new SubHeaderViewHolder(v);
-            return shvh;
+            return new SubHeaderViewHolder(v);
         }
     }
 
@@ -69,7 +61,6 @@ public class LineUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if(position == matchDetail.getHomeTeam().getStartingLineUps().size()+1 || position ==0){
             return VIEW_TYPE_SUB_HEADER;
         }else {
-            dataIndex++;
             return VIEW_TYPE_DATA;
         }
     }
@@ -84,6 +75,7 @@ public class LineUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             }else {
                 subHeaderViewHolder.textView.setText("Substitutes");
             }
+
         }else if(position < matchDetail.getHomeTeam().getStartingLineUps().size()+1){
             LineUpsViewHolder lineUpsViewHolder = (LineUpsViewHolder) holder;
             String homePlayerName = matchDetail.getHomeTeam().getStartingLineUps().get(position+POSITION_SHIFT_FIRST).getName();
@@ -115,7 +107,6 @@ public class LineUpAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public int getItemCount() {
         int startingPlayerNumber = matchDetail.getHomeTeam().getStartingLineUps().size();
         int benchPlayersNumber = matchDetail.getHomeTeam().getSubstitutes().size();
-//        int benchPlayersNumber = 0;
         return startingPlayerNumber+benchPlayersNumber+2 ;
     }
 

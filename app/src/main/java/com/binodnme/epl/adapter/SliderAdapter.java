@@ -2,7 +2,6 @@ package com.binodnme.epl.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.binodnme.epl.fragment.FixtureFragment;
@@ -25,8 +24,10 @@ public class SliderAdapter extends FragmentStatePagerAdapter {
         switch (position){
             case POSITION_MATCH:
                 return new FixtureFragment();
+
             case POSITION_TABLE:
                 return new StandingsFragment();
+
             default:
                 return new FixtureFragment();
         }

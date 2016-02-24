@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.model.ClubStanding;
+import com.binodnme.epl.utils.DrawableUtils;
 
 import java.util.List;
 
@@ -20,7 +20,6 @@ import java.util.List;
 public class StandingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<ClubStanding> dataset;
-    private Context context;
 
     public StandingsAdapter(){}
 
@@ -30,7 +29,6 @@ public class StandingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
     public static class StandingsViewHolder extends RecyclerView.ViewHolder{
-        public LinearLayout parentLayout;
         public TextView position;
         public ImageView logo;
         public TextView clubName;
@@ -62,9 +60,9 @@ public class StandingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         StandingsViewHolder svh = (StandingsViewHolder) holder;
         ClubStanding cs = dataset.get(position);
         Context context = svh.logo.getContext();
-        int id = getResourceId(context, cs.getName());
-        svh.logo.setImageResource(id == 0 ? R.mipmap.ic_launcher : id);
+        int id = DrawableUtils.getDrawableResourceId(context, cs.getName());
 
+        svh.logo.setImageResource(id == 0 ? R.mipmap.ic_launcher : id);
         svh.position.setText(String.valueOf(cs.getPosition()));
         svh.clubName.setText(cs.getName());
         svh.matchPlayed.setText(String.valueOf(cs.getMatchPlayed()));
@@ -76,11 +74,5 @@ public class StandingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemCount() {
         return dataset.size();
-    }
-
-    public int getResourceId(Context context, String name){
-        name = name.toLowerCase().replace(' ','_');
-
-        return context.getResources().getIdentifier(name, "drawable", context.getPackageName());
     }
 }

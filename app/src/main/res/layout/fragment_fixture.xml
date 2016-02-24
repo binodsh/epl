@@ -19,8 +19,9 @@
     <Spinner
         android:id="@+id/match_day_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorDivider"/>
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/horizontal_divider" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fixture_holder_layout"

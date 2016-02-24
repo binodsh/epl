@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.binodnme.epl.R;
@@ -19,10 +18,7 @@ import com.binodnme.epl.model.Fixture;
 import com.binodnme.epl.model.MatchDay;
 import com.binodnme.epl.model.PremierLeague;
 import com.binodnme.epl.rest.onefootball.OneFootball;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersAdapter;
-import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,6 +41,7 @@ public class FixtureFragment extends Fragment implements OneFootball.FixtureInte
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_fixture, container, false);
+
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.fixture_holder_layout);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -53,9 +50,10 @@ public class FixtureFragment extends Fragment implements OneFootball.FixtureInte
         mMatchDaySpinner.setOnItemSelectedListener(this);
 
         OneFootball.setFixtureListener(this);
-        OneFootball.setMatchDaysListenter(this);
+        OneFootball.setMatchDaysListener(this);
 
         PremierLeague.fetchMatchDays();
+
         rootView.findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
 
         return rootView;

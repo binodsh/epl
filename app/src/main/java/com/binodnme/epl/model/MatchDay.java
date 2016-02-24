@@ -6,7 +6,7 @@ package com.binodnme.epl.model;
 public class MatchDay {
     private long id;
     private String name;
-    Boolean isCurrentMatchDay;
+    private Boolean isCurrentMatchDay;
 
 
     public long getId() {

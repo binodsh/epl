@@ -1,15 +1,17 @@
 package com.binodnme.epl.rest.onefootball;
 
-import android.content.Context;
-
 import com.binodnme.epl.constants.ApplicationConstant;
+import com.binodnme.epl.model.CardEvent;
 import com.binodnme.epl.model.ClubStanding;
 import com.binodnme.epl.model.Fixture;
+import com.binodnme.epl.model.GoalEvent;
 import com.binodnme.epl.model.MatchDay;
 import com.binodnme.epl.model.MatchDetail;
+import com.binodnme.epl.model.MatchEvent;
 import com.binodnme.epl.model.MatchTeamDetail;
 import com.binodnme.epl.model.MatchTeamPlayerDetail;
 import com.binodnme.epl.model.PremierLeague;
+import com.binodnme.epl.model.SubstitutionEvent;
 import com.binodnme.epl.utils.DateUtils;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -18,9 +20,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -32,11 +34,6 @@ import cz.msebera.android.httpclient.Header;
 public class OneFootball {
     private static final String COMPETITION_ID = "9";
     private static final String SEASON_ID = "1231";
-
-    private static final String STANDINGS_JSON = "standings.json";
-    private static final String MATCH_DAY_JSON = "matchday.json";
-    private static final String MATCH_DETAILS_JSON = "match-details.json";
-    private static final String CHARACTER_ENCODING = "UTF-8";
 
     private static final String STANDING_TEAM_NAME = "name";
     private static final String STANDING_POSITION = "index";
@@ -60,6 +57,11 @@ public class OneFootball {
     private static final String SCORE_HOME = "scorehome";
     private static final String SCORE_AWAY = "scoreaway";
     private static final String PERIOD = "period";
+    private static final String SUBSTITUTIONS = "substitutions";
+    private static final String PLAYER_IN = "playerIn";
+    private static final String PLAYER_OUT = "playerOut";
+    private static final String PLAYER = "player";
+    private static final String EVENT_ID = "eventId";
 
 
     private static final String FULLTIME = "fulltime";
@@ -79,13 +81,15 @@ public class OneFootball {
     private static final String POSITION = "position";
     private static final String NUMBER = "number";
     private static final String BENCH = "bench";
+    private static final String CARDS = "cards";
+    private static final String GOALS = "goals";
+    private static final String TYPE = "type";
+    private static final String SCORE = "score";
 
 
+    private static final String BASE_PATH = "https://feedmonster.onefootball.com/feeds/il/en/competitions/";
 
-    private static final String TEST_JSON = "liga-bbva-test2.json";
 
-
-    //test
     public static StandingsInterface standingsInterface;
     public static FixtureInterface fixtureInterface;
     public static MatchDetailInterface matchDetailInterface;
@@ -96,14 +100,14 @@ public class OneFootball {
 
 
     public static void fetchMatchDays(){
-        String url = "https://feedmonster.onefootball.com/feeds/il/en/competitions/9/1231/matchdaysOverview.json";
+        String url = BASE_PATH+COMPETITION_ID+"/"+SEASON_ID+"/"+"matchdaysOverview.json";
 
         OneFootballClient.get(url, new RequestParams(), new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
                 try {
-                    List<MatchDay> matchDays = new ArrayList<MatchDay>();
+                    List<MatchDay> matchDays = new ArrayList<>();
                     JSONArray matchDayJsonArray = response.getJSONArray(MATCHDAYS);
                     for(int i=0; i<matchDayJsonArray.length(); i++){
                         JSONObject matchDayJson = matchDayJsonArray.getJSONObject(i);
@@ -139,7 +143,7 @@ public class OneFootball {
         });
     }
 
-    public static void fetchStandings(Context context){
+    public static void fetchStandings(){
 
         String url = "https://feedmonster.onefootball.com/feeds/il/en/competitions/9/1231/standings.json";
 
@@ -147,8 +151,7 @@ public class OneFootball {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    JSONObject jsonObject = response;
-                    JSONArray groups = jsonObject.getJSONArray(GROUPS);
+                    JSONArray groups = response.getJSONArray(GROUPS);
                     JSONArray ranking = null;
 
                     for(int i=0; i<groups.length(); i++){
@@ -187,16 +190,15 @@ public class OneFootball {
         });
     }
 
-    public static void fetchFixtures(Context context, long matchDayId){
-        String url = "https://feedmonster.onefootball.com/feeds/il/en/competitions/9/1231/matchdays/"+matchDayId+".json";
-        String json;
+    public static void fetchFixtures(long matchDayId){
+        String url = BASE_PATH+COMPETITION_ID+"/"+SEASON_ID+"/matchdays/"+matchDayId+".json";
+
         OneFootballClient.get(url, new RequestParams(), new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
 
-                    JSONObject jsonObject = response;
-                    JSONArray kickOffs = jsonObject.getJSONArray(KICK_OFFS);
+                    JSONArray kickOffs = response.getJSONArray(KICK_OFFS);
 
                     List<Fixture> fixtures = new ArrayList<>();
 
@@ -277,102 +279,21 @@ public class OneFootball {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
-//        try {
-//            InputStream is = context.getAssets().open(TEST_JSON);
-//            int size = is.available();
-//            byte[] buffer = new byte[size];
-//            is.read(buffer);
-//            is.close();
-//            json = new String(buffer, CHARACTER_ENCODING);
-//
-//            JSONObject jsonObject = new JSONObject(json);
-//            JSONArray kickOffs = jsonObject.getJSONArray(KICK_OFFS);
-//
-//            List<Fixture> fixtures = new ArrayList<>();
-//
-//            for(int i=0; i<kickOffs.length(); i++){
-//                JSONObject obj = kickOffs.getJSONObject(i);
-//                JSONArray groups = obj.getJSONArray(GROUPS);
-//                String stringDate = obj.getString(KICK_OFF);
-//                JSONArray matches = null;
-//                for (int j=0; j<groups.length(); j++){
-//                    try{
-//                        matches = groups.getJSONObject(j).getJSONArray(MATCHES);
-//                        break;
-//                    }catch (JSONException e){
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//                if(matches != null){
-//                    for(int k=0; k<matches.length(); k++){
-//                        Fixture fixture =  new Fixture();
-//                        JSONObject match = matches.getJSONObject(k);
-//                        JSONObject teamHome = match.getJSONObject(TEAM_HOME);
-//                        JSONObject teamAway = match.getJSONObject(TEAM_AWAY);
-//
-//                        fixture.setMatchId(match.getLong(MATCH_ID));
-//                        fixture.setHomeTeamName(teamHome.getString(NAME));
-//                        fixture.setHomeTeamScore(match.getInt(SCORE_HOME));
-//                        fixture.setAwayTeamName(teamAway.getString(NAME));
-//                        fixture.setAwayTeamScore(match.getInt(SCORE_AWAY));
-//
-//                        String dateFormat = "yyyy-MM-dd'T'HH:mm:ss";
-//                        Date matchDate = DateUtils.getDateObject(stringDate, dateFormat);
-//                        fixture.setMatchDate(matchDate);
-//
-//                        switch (match.getString(PERIOD).toLowerCase()){
-//                            case FULLTIME:
-//                                fixture.setMatchStatus(ApplicationConstant.FT);
-//                                break;
-//
-//                            case HALFTIME:
-//                                fixture.setMatchStatus(ApplicationConstant.HT);
-//                                break;
-//
-//                            case FIRSTHALF:
-//                                fixture.setMatchStatus(ApplicationConstant.FH);
-//                                break;
-//
-//                            case SECONDHALF:
-//                                fixture.setMatchStatus(ApplicationConstant.SH);
-//                                break;
-//
-//                            case PREMATCH:
-//                                fixture.setMatchStatus(ApplicationConstant.PM);
-//                        }
-//                        fixtures.add(fixture);
-//                    }
-//                }
-//            }
-//
-//            return fixtures;
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-
     }
 
-    public static void getMatchDetail(Context context, final Fixture fixture){
+    public static void getMatchDetail(final Fixture fixture){
         String url = "https://feedmonster.onefootball.com/feeds/il/en/competitions/9/1231/matches/"+fixture.getMatchId()+".json";
-        String json;
 
         OneFootballClient.get(url, new RequestParams(), new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try{
-
-
                     //declare match detail object
                     MatchDetail matchDetail = new MatchDetail();
 
                     //build match detail json object from json string
-                    JSONObject matchDetailJsonOjb = response;
 
-                    JSONObject matchJsonObj = matchDetailJsonOjb.getJSONObject(MATCH);
+                    JSONObject matchJsonObj = response.getJSONObject(MATCH);
                     int minute = matchJsonObj.getInt(MINUTE);
                     JSONObject stadiumJsonObj = matchJsonObj.getJSONObject(STADIUM);
                     JSONObject refereeJsonObj = matchJsonObj.getJSONObject(REFEREE);
@@ -389,38 +310,15 @@ public class OneFootball {
                     homeTeamDetail.setTeamId(homeTeamId);
                     homeTeamDetail.setTeamName(fixture.getHomeTeamName());
 
+                    //build starting line up list of home team
                     JSONArray homeTeamStartingLineUpJsonArray = teamHomeJsonObj.getJSONArray(FORMATION);
-                    List<MatchTeamPlayerDetail> homeTeamStartingLineUp = new ArrayList<>();
-                    for(int i=0; i<homeTeamStartingLineUpJsonArray.length(); i++){
-                        MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
-                        JSONObject playerDetailJsonObj = homeTeamStartingLineUpJsonArray.getJSONObject(i);
-
-                        player.setId(playerDetailJsonObj.getLong(ID));
-                        player.setName(playerDetailJsonObj.getString(NAME));
-                        player.setPosition(playerDetailJsonObj.getString(POSITION));
-                        player.setNumber(playerDetailJsonObj.getLong(NUMBER));
-
-                        homeTeamStartingLineUp.add(player);
-                    }
-
+                    List<MatchTeamPlayerDetail> homeTeamStartingLineUp = getPlayerList(homeTeamStartingLineUpJsonArray);
                     homeTeamDetail.setStartingLineUps(homeTeamStartingLineUp);
 
+                    //build substitute player list of home team
                     JSONArray homeTeamBenchPlayersJsonArray = teamHomeJsonObj.getJSONArray(BENCH);
-                    List<MatchTeamPlayerDetail> homeTeamBenchPlayers = new ArrayList<>();
-                    for(int i=0; i<homeTeamBenchPlayersJsonArray.length(); i++){
-                        MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
-                        JSONObject playerDetailJsonObj = homeTeamBenchPlayersJsonArray.getJSONObject(i);
-
-                        player.setId(playerDetailJsonObj.getLong(ID));
-                        player.setName(playerDetailJsonObj.getString(NAME));
-                        player.setPosition(playerDetailJsonObj.getString(POSITION));
-                        player.setNumber(playerDetailJsonObj.getLong(NUMBER));
-
-                        homeTeamBenchPlayers.add(player);
-                    }
-
+                    List<MatchTeamPlayerDetail> homeTeamBenchPlayers = getPlayerList(homeTeamBenchPlayersJsonArray);
                     homeTeamDetail.setSubstitutes(homeTeamBenchPlayers);
-
 
 
                     //away team details object holds the details on away team including the formation, substitutions, etc
@@ -429,39 +327,107 @@ public class OneFootball {
                     awayTeamDetail.setTeamId(awayTeamId);
                     awayTeamDetail.setTeamName(fixture.getAwayTeamName());
 
+
+                    //build starting line up list of away team
                     JSONArray awayTeamStartingLineUpJsonArray = teamAwayJsonObj.getJSONArray(FORMATION);
-                    List<MatchTeamPlayerDetail> awayTeamStartingLineUp = new ArrayList<>();
-                    for(int i=0; i<awayTeamStartingLineUpJsonArray.length(); i++){
-                        MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
-                        JSONObject playerDetailJsonObj = awayTeamStartingLineUpJsonArray.getJSONObject(i);
-
-                        player.setId(playerDetailJsonObj.getLong(ID));
-                        player.setName(playerDetailJsonObj.getString(NAME));
-                        player.setPosition(playerDetailJsonObj.getString(POSITION));
-                        player.setNumber(playerDetailJsonObj.getLong(NUMBER));
-
-                        awayTeamStartingLineUp.add(player);
-                    }
-
+                    List<MatchTeamPlayerDetail> awayTeamStartingLineUp = getPlayerList(awayTeamStartingLineUpJsonArray);
                     awayTeamDetail.setStartingLineUps(awayTeamStartingLineUp);
 
+                    //build substitute player list of away team
                     JSONArray awayTeamBenchPlayersJsonArray = teamAwayJsonObj.getJSONArray(BENCH);
-                    List<MatchTeamPlayerDetail> awayTeamBenchPlayers = new ArrayList<>();
-                    for(int i=0; i<awayTeamBenchPlayersJsonArray.length(); i++){
-                        MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
-                        JSONObject playerDetailJsonObj = awayTeamBenchPlayersJsonArray.getJSONObject(i);
-
-                        player.setId(playerDetailJsonObj.getLong(ID));
-                        player.setName(playerDetailJsonObj.getString(NAME));
-                        player.setPosition(playerDetailJsonObj.getString(POSITION));
-                        player.setNumber(playerDetailJsonObj.getLong(NUMBER));
-
-                        awayTeamBenchPlayers.add(player);
-                    }
-
+                    List<MatchTeamPlayerDetail> awayTeamBenchPlayers = getPlayerList(awayTeamBenchPlayersJsonArray);
                     awayTeamDetail.setSubstitutes(awayTeamBenchPlayers);
 
 
+                    //event related task here
+                    //build substitution list for home team
+                    JSONArray homeTeamSubstitutionJsonArray = teamHomeJsonObj.getJSONArray(SUBSTITUTIONS);
+                    List<MatchEvent> matchEvents = new ArrayList<>();
+                    for(int i=0; i<homeTeamSubstitutionJsonArray.length(); i++){
+                        SubstitutionEvent se = new SubstitutionEvent();
+                        long eventTime = homeTeamSubstitutionJsonArray.getJSONObject(i).getLong(MINUTE);
+                        JSONObject playerInJsonObj = homeTeamSubstitutionJsonArray.getJSONObject(i).getJSONObject(PLAYER_IN);
+                        JSONObject playerOutJsonObj = homeTeamSubstitutionJsonArray.getJSONObject(i).getJSONObject(PLAYER_OUT);
+                        MatchTeamPlayerDetail playerIn = getPlayer(playerInJsonObj);
+                        MatchTeamPlayerDetail playerOut = getPlayer(playerOutJsonObj);
+
+                        se.setEventTime(eventTime);
+                        se.setPlayerIn(playerIn);
+                        se.setPlayerOut(playerOut);
+                        se.setHomeEvent(true);
+                        matchEvents.add(se);
+                    }
+
+                    //build substitution list for away team
+                    JSONArray awayTeamSubstitutionJsonArray = teamAwayJsonObj.getJSONArray(SUBSTITUTIONS);
+                    for(int i=0; i<awayTeamSubstitutionJsonArray.length(); i++){
+                        SubstitutionEvent se = new SubstitutionEvent();
+                        long eventTime = awayTeamSubstitutionJsonArray.getJSONObject(i).getLong(MINUTE);
+                        JSONObject playerInJsonObj = awayTeamSubstitutionJsonArray.getJSONObject(i).getJSONObject(PLAYER_IN);
+                        JSONObject playerOutJsonObj = awayTeamSubstitutionJsonArray.getJSONObject(i).getJSONObject(PLAYER_OUT);
+                        MatchTeamPlayerDetail playerIn = getPlayer(playerInJsonObj);
+                        MatchTeamPlayerDetail playerOut = getPlayer(playerOutJsonObj);
+
+                        se.setEventTime(eventTime);
+                        se.setPlayerIn(playerIn);
+                        se.setPlayerOut(playerOut);
+                        se.setHomeEvent(false);
+                        matchEvents.add(se);
+                    }
+
+                    JSONArray cardEventJsonArray = matchJsonObj.getJSONArray(CARDS);
+                    for(int i=0; i<cardEventJsonArray.length(); i++){
+                        CardEvent cardEvent = new CardEvent();
+                        long eventTime = cardEventJsonArray.getJSONObject(i).getLong(MINUTE);
+                        String type = cardEventJsonArray.getJSONObject(i).getString(TYPE);
+                        JSONObject playerJsonObject = cardEventJsonArray.getJSONObject(i).getJSONObject(PLAYER);
+                        MatchTeamPlayerDetail player = getPlayer(playerJsonObject);
+
+
+                        cardEvent.setEventTime(eventTime);
+                        cardEvent.setType(type);
+                        cardEvent.setPlayer(player);
+
+                        long internalTeamId = playerJsonObject.getLong("teamId");
+
+                        if(internalTeamId == homeTeamDetail.getTeamId()){
+                            cardEvent.setHomeEvent(true);
+                        }else {
+                            cardEvent.setHomeEvent(false);
+                        }
+
+                        matchEvents.add(cardEvent);
+                    }
+
+
+                    JSONArray goalEventJsonArray = matchJsonObj.getJSONArray(GOALS);
+                    for(int i=0; i<goalEventJsonArray.length(); i++){
+                        GoalEvent goalEvent = new GoalEvent();
+                        long eventTime = goalEventJsonArray.getJSONObject(i).getLong(MINUTE);
+                        String type = goalEventJsonArray.getJSONObject(i).getString(TYPE);
+                        String score = goalEventJsonArray.getJSONObject(i).getString(SCORE);
+                        JSONObject playerJsonObject = goalEventJsonArray.getJSONObject(i).getJSONObject(PLAYER);
+                        MatchTeamPlayerDetail player = getPlayer(playerJsonObject);
+
+
+                        goalEvent.setEventTime(eventTime);
+                        goalEvent.setType(type);
+                        goalEvent.setPlayer(player);
+                        goalEvent.setScore(score);
+
+                        long teamId = goalEventJsonArray.getJSONObject(i).getLong("teamId");
+
+                        if(teamId == homeTeamDetail.getTeamId()){
+                            goalEvent.setHomeEvent(true);
+                        }else {
+                            goalEvent.setHomeEvent(false);
+                        }
+
+                        matchEvents.add(goalEvent);
+                    }
+
+                    matchDetail.setMatchEvents(matchEvents);
+                    Collections.sort(matchEvents);
 
                     //setting field values for match details object
                     matchDetail.setMatchId(fixture.getMatchId());
@@ -475,7 +441,6 @@ public class OneFootball {
                     matchDetail.setHomeTeam(homeTeamDetail);
                     matchDetail.setAwayTeam(awayTeamDetail);
 
-                    System.out.println(matchDetail);
                     matchDetailInterface.onSuccess(matchDetail);
 
                 } catch (JSONException e) {
@@ -493,178 +458,6 @@ public class OneFootball {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
-
-//        try{
-//            InputStream is = context.getAssets().open(MATCH_DETAILS_JSON);
-//            int size = is.available();
-//            byte[] buffer = new byte[size];
-//            is.read(buffer);
-//            is.close();
-//
-//            //get json string
-//            json = new String(buffer, CHARACTER_ENCODING);
-//
-//            //declare match detail object
-//            MatchDetail matchDetail = new MatchDetail();
-//
-//            //build match detail json object from json string
-//            JSONObject matchDetailJsonOjb = new JSONObject(json);
-//
-//            JSONObject matchJsonObj = matchDetailJsonOjb.getJSONObject(MATCH);
-//            int minute = matchJsonObj.getInt(MINUTE);
-//            JSONObject stadiumJsonObj = matchJsonObj.getJSONObject(STADIUM);
-//            JSONObject refereeJsonObj = matchJsonObj.getJSONObject(REFEREE);
-//            JSONObject teamHomeJsonObj = matchJsonObj.getJSONObject(TEAM_HOME);
-//            JSONObject teamAwayJsonObj = matchJsonObj.getJSONObject(TEAM_AWAY);
-//            //assign cards and goals json objects here
-//
-//            String stadiumName = stadiumJsonObj.getString(NAME);
-//            String refereeName = refereeJsonObj.getString(NAME);
-//
-//            //home team details object holds the details on home team including the formation, substitutions, etc
-//            MatchTeamDetail homeTeamDetail = new MatchTeamDetail();
-//            long homeTeamId = teamHomeJsonObj.getLong(ID);
-//            homeTeamDetail.setTeamId(homeTeamId);
-//            homeTeamDetail.setTeamName(fixture.getHomeTeamName());
-//
-//            JSONArray homeTeamStartingLineUpJsonArray = teamHomeJsonObj.getJSONArray(FORMATION);
-//            List<MatchTeamPlayerDetail> homeTeamStartingLineUp = new ArrayList<>();
-//            for(int i=0; i<homeTeamStartingLineUpJsonArray.length(); i++){
-//                MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
-//                JSONObject playerDetailJsonObj = homeTeamStartingLineUpJsonArray.getJSONObject(i);
-//
-//                player.setId(playerDetailJsonObj.getLong(ID));
-//                player.setName(playerDetailJsonObj.getString(NAME));
-//                player.setPosition(playerDetailJsonObj.getString(POSITION));
-//                player.setNumber(playerDetailJsonObj.getLong(NUMBER));
-//
-//                homeTeamStartingLineUp.add(player);
-//            }
-//
-//            homeTeamDetail.setStartingLineUps(homeTeamStartingLineUp);
-//
-//            JSONArray homeTeamBenchPlayersJsonArray = teamHomeJsonObj.getJSONArray(BENCH);
-//            List<MatchTeamPlayerDetail> homeTeamBenchPlayers = new ArrayList<>();
-//            for(int i=0; i<homeTeamBenchPlayersJsonArray.length(); i++){
-//                MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
-//                JSONObject playerDetailJsonObj = homeTeamBenchPlayersJsonArray.getJSONObject(i);
-//
-//                player.setId(playerDetailJsonObj.getLong(ID));
-//                player.setName(playerDetailJsonObj.getString(NAME));
-//                player.setPosition(playerDetailJsonObj.getString(POSITION));
-//                player.setNumber(playerDetailJsonObj.getLong(NUMBER));
-//
-//                homeTeamBenchPlayers.add(player);
-//            }
-//
-//            homeTeamDetail.setSubstitutes(homeTeamBenchPlayers);
-//
-//
-//
-//            //away team details object holds the details on away team including the formation, substitutions, etc
-//            MatchTeamDetail awayTeamDetail = new MatchTeamDetail();
-//            long awayTeamId = teamAwayJsonObj.getLong(ID);
-//            awayTeamDetail.setTeamId(awayTeamId);
-//            awayTeamDetail.setTeamName(fixture.getAwayTeamName());
-//
-//            JSONArray awayTeamStartingLineUpJsonArray = teamAwayJsonObj.getJSONArray(FORMATION);
-//            List<MatchTeamPlayerDetail> awayTeamStartingLineUp = new ArrayList<>();
-//            for(int i=0; i<awayTeamStartingLineUpJsonArray.length(); i++){
-//                MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
-//                JSONObject playerDetailJsonObj = awayTeamStartingLineUpJsonArray.getJSONObject(i);
-//
-//                player.setId(playerDetailJsonObj.getLong(ID));
-//                player.setName(playerDetailJsonObj.getString(NAME));
-//                player.setPosition(playerDetailJsonObj.getString(POSITION));
-//                player.setNumber(playerDetailJsonObj.getLong(NUMBER));
-//
-//                awayTeamStartingLineUp.add(player);
-//            }
-//
-//            awayTeamDetail.setStartingLineUps(awayTeamStartingLineUp);
-//
-//            JSONArray awayTeamBenchPlayersJsonArray = teamHomeJsonObj.getJSONArray(BENCH);
-//            List<MatchTeamPlayerDetail> awayTeamBenchPlayers = new ArrayList<>();
-//            for(int i=0; i<awayTeamBenchPlayersJsonArray.length(); i++){
-//                MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
-//                JSONObject playerDetailJsonObj = awayTeamBenchPlayersJsonArray.getJSONObject(i);
-//
-//                player.setId(playerDetailJsonObj.getLong(ID));
-//                player.setName(playerDetailJsonObj.getString(NAME));
-//                player.setPosition(playerDetailJsonObj.getString(POSITION));
-//                player.setNumber(playerDetailJsonObj.getLong(NUMBER));
-//
-//                awayTeamBenchPlayers.add(player);
-//            }
-//
-//            awayTeamDetail.setSubstitutes(awayTeamBenchPlayers);
-//
-//
-//
-//            //setting field values for match details object
-//            matchDetail.setMatchId(fixture.getMatchId());
-//            matchDetail.setHomeTeamScore(fixture.getHomeTeamScore());
-//            matchDetail.setAwayTeamScore(fixture.getAwayTeamScore());
-//            matchDetail.setMatchStatus(fixture.getMatchStatus());
-//            matchDetail.setKickoffTime(fixture.getMatchDate());
-//            matchDetail.setMinute(minute);
-//            matchDetail.setRefereeName(refereeName);
-//            matchDetail.setStadiumName(stadiumName);
-//            matchDetail.setHomeTeam(homeTeamDetail);
-//            matchDetail.setAwayTeam(awayTeamDetail);
-//
-//            return matchDetail;
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-
-    private static JSONObject hitUrl(String url, RequestParams params){
-        final JSONObject[] output = new JSONObject[1];
-        System.out.println("here is url :"+url);
-        OneFootballClient.get(url,params, new JsonHttpResponseHandler(){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                System.out.println("------------------------response starts here----------------------------");
-                output[0] = response;
-                System.out.println(response);
-                System.out.println("------------------------response ends here----------------------------");
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                System.out.println("--------------------error starts here--------------------");
-                System.out.println(errorResponse.toString());
-                output[0] = errorResponse;
-                System.out.println("--------------------error ends here--------------------");
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                System.out.println("--------------------error starts here--------------------");
-                System.out.println(errorResponse.toString());
-                System.out.println("--------------------error ends here--------------------");
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                System.out.println("--------------------error starts here--------------------");
-                System.out.println(responseString);
-                System.out.println("--------------------error ends here--------------------");
-            }
-        });
-        if(output[0] == null){
-            try {
-                output[0] = new JSONObject("{\"name\":\"binod\"}");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        return output[0];
     }
 
 
@@ -702,7 +495,48 @@ public class OneFootball {
         matchDetailInterface = t;
     }
 
-    public static void setMatchDaysListenter(MatchDaysInterface t){
+    public static void setMatchDaysListener(MatchDaysInterface t){
         matchDaysInterface = t;
+    }
+
+
+    /**
+     * This method takes JSONArray as input, builds the players list and returns the list
+     * @param playerDetailJsonArray
+     * @return List<MatchTeamPlayerDetail>
+     */
+    private static List<MatchTeamPlayerDetail> getPlayerList(JSONArray playerDetailJsonArray){
+        List<MatchTeamPlayerDetail> playerList = new ArrayList<>();
+
+        try{
+            for(int i=0; i<playerDetailJsonArray.length(); i++){
+                JSONObject playerDetailJsonObj = playerDetailJsonArray.getJSONObject(i);
+                playerList.add(getPlayer(playerDetailJsonObj));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return playerList;
+    }
+
+    /**
+     * This method takes JSONObject as input, builds the MatchTeamPlayerDetail object and returns the object
+     * @param playerDetailJsonObj
+     * @return MatchTeamPlayerDetail
+     */
+    private static MatchTeamPlayerDetail getPlayer(JSONObject playerDetailJsonObj){
+        MatchTeamPlayerDetail player = new MatchTeamPlayerDetail();
+        try {
+            player.setId(playerDetailJsonObj.getLong(ID));
+            player.setName(playerDetailJsonObj.getString(NAME));
+            player.setPosition(playerDetailJsonObj.getString(POSITION));
+            player.setNumber(playerDetailJsonObj.getLong(NUMBER));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return player;
     }
 }

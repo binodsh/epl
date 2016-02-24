@@ -13,7 +13,7 @@ public class Fixture implements Serializable{
     private long awayTeamId;
     private String awayTeamName;
     private Date matchDate;
-    private String matchStatus;     //FT=fulltime, HT=halftime, FH=firsthalf, SH=secondhalf PM=prematch
+    private String matchStatus;     //FT=fulltime, HT=halftime, FH=firsthalf, SH=secondhalf PM=prematch, PP=postponed
     private int homeTeamScore;
     private int awayTeamScore;
 
