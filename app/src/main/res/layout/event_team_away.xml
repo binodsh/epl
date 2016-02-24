@@ -17,12 +17,12 @@
         android:layout_weight="3"
         android:background="@color/white"
         android:gravity="center_vertical"
-        android:paddingLeft="16dp"
+        android:paddingLeft="10dp"
         android:paddingRight="16dp">
 
         <ImageView
             android:id="@+id/event_icon"
-            android:layout_width="20dp"
+            android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/yellow_card" />
@@ -30,7 +30,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="5"
             android:orientation="vertical"
             android:gravity="end">
             <TextView

@@ -33,7 +33,7 @@ public class TimelineFragment extends Fragment {
         MatchDetail matchDetail = (MatchDetail) bundle.getSerializable(MatchInfoPagerAdapter.MATCH_DETAIL);
 
         ViewGroup rootView;
-        if(ApplicationConstant.PM.equalsIgnoreCase(matchDetail.getMatchStatus())){
+        if(ApplicationConstant.PM.equalsIgnoreCase(matchDetail.getMatchStatus()) || ApplicationConstant.PP.equalsIgnoreCase(matchDetail.getMatchStatus())){
             rootView = (ViewGroup) inflater.inflate(R.layout.coming_soon, container, false);
             return rootView;
         }
