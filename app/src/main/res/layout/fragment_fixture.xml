@@ -23,9 +23,19 @@
 
     <include layout="@layout/horizontal_divider" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fixture_holder_layout"
+    <include layout="@layout/connection_error" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_fixture"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fixture_holder_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </LinearLayout>

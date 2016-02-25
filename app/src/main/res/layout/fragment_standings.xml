@@ -1,8 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
+    android:orientation="vertical"
     tools:context="com.binodnme.epl.fragment.StandingsFragment">
 
     <LinearLayout
@@ -48,10 +49,19 @@
         android:layout_height="1dp"
         android:layout_below="@+id/standings_header" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/standings_holder_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="50dp" />
+    <include layout="@layout/connection_error" />
 
-</RelativeLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_standings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/standings_holder_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

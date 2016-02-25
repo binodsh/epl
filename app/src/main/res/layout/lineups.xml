@@ -8,5 +8,10 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/id_lineups_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Refree: binod shrestha"/>
 </LinearLayout>

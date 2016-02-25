@@ -1,11 +1,12 @@
 package com.binodnme.epl.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.binodnme.epl.R;
@@ -19,6 +20,7 @@ import java.util.List;
 public class MatchDaySpinnerAdapter extends BaseAdapter {
 
     private List<MatchDay> matchDays;
+    private int matchDayPosition;
 
     public MatchDaySpinnerAdapter() {
     }
@@ -58,23 +60,29 @@ public class MatchDaySpinnerAdapter extends BaseAdapter {
         holder.mTextView.setText(matchDays.get(position).getName());
 
         if(matchDays.get(position).getCurrentMatchDay()){
-            holder.mImageView.setVisibility(View.VISIBLE);
+            holder.mMatchDayIndicator.setVisibility(View.VISIBLE);
+            holder.mMatchDayIndicator.setBackgroundColor(Color.parseColor("#64DD17"));
+            matchDayPosition = position;
         }else{
-            holder.mImageView.setVisibility(View.GONE);
+            holder.mMatchDayIndicator.setVisibility(View.VISIBLE);
+            if(position > matchDayPosition){
+                holder.mMatchDayIndicator.setBackgroundColor(Color.parseColor("#457ad0"));
+            }else{
+                holder.mMatchDayIndicator.setBackgroundColor(Color.parseColor("#EF6C00"));
+            }
         }
         return view;
     }
 
     public class SpinnerViewHolder {
-        LinearLayout mLinearLayout;
+        RelativeLayout mLinearLayout;
+        View mMatchDayIndicator;
         TextView mTextView;
-        ImageView mImageView;
 
         public SpinnerViewHolder(View itemView) {
-            mLinearLayout = (LinearLayout) itemView;
+            mLinearLayout = (RelativeLayout) itemView;
+            mMatchDayIndicator = itemView.findViewById(R.id.match_day_indicator);
             mTextView = (TextView) itemView.findViewById(R.id.spinner_text);
-            mImageView = (ImageView) itemView.findViewById(R.id.current_matchday_ticker);
-
         }
     }
 }
