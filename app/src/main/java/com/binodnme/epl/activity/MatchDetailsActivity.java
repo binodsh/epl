@@ -37,8 +37,8 @@ public class MatchDetailsActivity extends AppCompatActivity implements OneFootba
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_details);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         Bundle args = getIntent().getExtras();
         Fixture fixture = (Fixture) args.getSerializable(FixtureAdapter.FIXTURE);

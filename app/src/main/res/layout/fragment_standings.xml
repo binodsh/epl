@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
     android:orientation="vertical"
     tools:context="com.binodnme.epl.fragment.StandingsFragment">
 
@@ -10,7 +9,8 @@
         android:id="@+id/standings_header"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:paddingLeft="16dp">
 
         <TextView
             android:layout_width="0dp"
@@ -54,7 +54,8 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_standings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/standings_holder_layout"

@@ -18,6 +18,7 @@ import com.binodnme.epl.constants.ApplicationConstant;
 import com.binodnme.epl.model.Fixture;
 import com.binodnme.epl.utils.DateUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -276,5 +277,14 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getResourceId(Context context, String name){
         name = name.toLowerCase().replace(' ','_');
         return context.getResources().getIdentifier(name, "drawable", context.getPackageName());
+    }
+
+    public List<Fixture> getDataSet() {
+        return dataSet;
+    }
+
+    public void setDataSet(List<Fixture> dataSet) {
+        this.dataSet = dataSet !=  null ? dataSet : new ArrayList<Fixture>();
+        notifyDataSetChanged();
     }
 }
