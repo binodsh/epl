@@ -75,4 +75,13 @@ public class StandingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public int getItemCount() {
         return dataset.size();
     }
+
+    public List<ClubStanding> getDataset() {
+        return dataset;
+    }
+
+    public void setDataset(List<ClubStanding> dataset) {
+        this.dataset = dataset;
+        notifyDataSetChanged();
+    }
 }

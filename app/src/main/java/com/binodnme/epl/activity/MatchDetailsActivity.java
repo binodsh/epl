@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,7 +43,7 @@ public class MatchDetailsActivity extends AppCompatActivity implements OneFootba
         Fixture fixture = (Fixture) args.getSerializable(FixtureAdapter.FIXTURE);
 
         OneFootball.setMatchDetailListener(this);
-        PremierLeague.getMatchDetail(this, fixture);
+        PremierLeague.fetchMatchDetail(this, fixture);
 
         teamHomeName = (TextView) findViewById(R.id.team_home_name);
         teamAwayName = (TextView) findViewById(R.id.team_away_name);

@@ -1,6 +1,5 @@
 package com.binodnme.epl.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.adapter.FixtureAdapter;
@@ -39,7 +37,6 @@ public class FixtureFragment extends Fragment implements OneFootball.FixtureInte
     private MatchDaySpinnerAdapter mMatchDaySpinnerAdapter;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
-//    private View mBlankViewFixture;
     private LinearLayout mErrorMessage;
 
     public FixtureFragment(){
@@ -50,8 +47,6 @@ public class FixtureFragment extends Fragment implements OneFootball.FixtureInte
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_fixture, container, false);
-
-
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.fixture_holder_layout);
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -70,43 +65,31 @@ public class FixtureFragment extends Fragment implements OneFootball.FixtureInte
         mErrorMessage = (LinearLayout) rootView.findViewById(R.id.error_message);
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_fixture);
 
-        System.out.println("layout params : "+mSwipeRefreshLayout.getLayoutParams().width+", "+mSwipeRefreshLayout.getLayoutParams().height);
-//        mBlankViewFixture = (View) rootView.findViewById(R.id.blank_view_fixture_fragment);
-
         mAdapter = new FixtureAdapter(new ArrayList<Fixture>());
         mRecyclerView.setAdapter(mAdapter);
 
         mSwipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener(){
-
                     @Override
                     public void onRefresh() {
                         PremierLeague.fetchMatchDays();
-                        System.out.println("layout params : "+mSwipeRefreshLayout.getLayoutParams().width+", "+mSwipeRefreshLayout.getLayoutParams().height);
                     }
                 }
         );
-
-        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
 
         return rootView;
     }
 
     @Override
     public void onSuccess(List<Fixture> fixtures) {
-//        mAdapter = new FixtureAdapter(fixtures);
-//        mRecyclerView.setAdapter(mAdapter);
         ((FixtureAdapter) mAdapter).setDataSet(fixtures);
-
         rootView.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
-//        mBlankViewFixture.setVisibility(View.GONE);
     }
 
 
     @Override
     public void onMatchDayFetchSuccess(List<MatchDay> matchDays) {
         mErrorMessage.setVisibility(View.GONE);
-//        mBlankViewFixture.setVisibility(View.GONE);
         mSwipeRefreshLayout.setRefreshing(false);
 
         mMatchDaySpinnerAdapter = new MatchDaySpinnerAdapter(matchDays);
@@ -128,14 +111,13 @@ public class FixtureFragment extends Fragment implements OneFootball.FixtureInte
         });
 
         mMatchDaySpinner.setAdapter(mMatchDaySpinnerAdapter);
-        PremierLeague.getFixtures(getActivity(), matchDays.get(matchDayIndex).getId());
+        PremierLeague.fetchFixtures(getActivity(), matchDays.get(matchDayIndex).getId());
     }
 
     @Override
     public void onMatchDayFetchFailure() {
         mSwipeRefreshLayout.setRefreshing(false);
         mErrorMessage.setVisibility(View.VISIBLE);
-//        mBlankViewFixture.setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
     }
 
@@ -143,14 +125,13 @@ public class FixtureFragment extends Fragment implements OneFootball.FixtureInte
     public void onFailure() {
         mSwipeRefreshLayout.setRefreshing(false);
         mErrorMessage.setVisibility(View.VISIBLE);
-//        mBlankViewFixture.setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         rootView.findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
-        PremierLeague.getFixtures(getActivity(), id);
+        PremierLeague.fetchFixtures(getActivity(), id);
     }
 
     @Override

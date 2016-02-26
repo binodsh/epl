@@ -46,7 +46,6 @@ public class OneFootball {
     private static final String RANKING = "ranking";
     private static final String TEAM = "team";
     private static final String TEAM_STATS = "teamstats";
-
     private static final String KICK_OFFS = "kickoffs";
     private static final String KICK_OFF = "kickoff";
     private static final String MATCHES = "matches";
@@ -62,7 +61,6 @@ public class OneFootball {
     private static final String PLAYER_OUT = "playerOut";
     private static final String PLAYER = "player";
     private static final String EVENT_ID = "eventId";
-
 
     private static final String FULLTIME = "fulltime";
     private static final String HALFTIME = "halftime";
@@ -86,17 +84,15 @@ public class OneFootball {
     private static final String TYPE = "type";
     private static final String SCORE = "score";
 
-
     private static final String BASE_PATH = "https://feedmonster.onefootball.com/feeds/il/en/competitions/";
-
+    private static final String MATCHDAYS = "matchdays";
+    private static final String IS_CURRENT_MATCHDAY = "isCurrentMatchday";
 
     public static StandingsInterface standingsInterface;
     public static FixtureInterface fixtureInterface;
     public static MatchDetailInterface matchDetailInterface;
     public static MatchDaysInterface matchDaysInterface;
 
-    private static final String MATCHDAYS = "matchdays";
-    private static final String IS_CURRENT_MATCHDAY = "isCurrentMatchday";
 
 
     public static void fetchMatchDays(){
@@ -119,6 +115,7 @@ public class OneFootball {
                         matchDays.add(matchDay);
                     }
 
+                    PremierLeague.setMatchDays(matchDays);
                     matchDaysInterface.onMatchDayFetchSuccess(matchDays);
 
                 } catch (JSONException e) {
@@ -148,7 +145,7 @@ public class OneFootball {
 
     public static void fetchStandings(){
 
-        String url = "https://feedmonster.onefootball.com/feeds/il/en/competitions/9/1231/standings.json";
+        String url = BASE_PATH+COMPETITION_ID+"/"+SEASON_ID+"/standings.json";
 
         OneFootballClient.get(url, new RequestParams(), new JsonHttpResponseHandler(){
             @Override
@@ -183,7 +180,6 @@ public class OneFootball {
                     }
 
                     PremierLeague.setStandings(clubStandings);
-
                     standingsInterface.onSuccess(clubStandings);
 
                 } catch (JSONException e) {
@@ -282,7 +278,7 @@ public class OneFootball {
                             }
                         }
                     }
-
+                    PremierLeague.setFixtures(fixtures);
                     fixtureInterface.onSuccess(fixtures);
 
                 } catch (JSONException e) {
@@ -311,7 +307,7 @@ public class OneFootball {
     }
 
     public static void getMatchDetail(final Fixture fixture){
-        String url = "https://feedmonster.onefootball.com/feeds/il/en/competitions/9/1231/matches/"+fixture.getMatchId()+".json";
+        String url = BASE_PATH+COMPETITION_ID+"/"+SEASON_ID+"/matches/"+fixture.getMatchId()+".json";
 
         OneFootballClient.get(url, new RequestParams(), new JsonHttpResponseHandler(){
             @Override
@@ -471,6 +467,7 @@ public class OneFootball {
                     matchDetail.setAwayTeam(awayTeamDetail);
 
                     matchDetailInterface.onSuccess(matchDetail);
+                    PremierLeague.setMatchDetail(matchDetail);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

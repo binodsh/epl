@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.adapter.StandingsAdapter;
@@ -18,6 +17,7 @@ import com.binodnme.epl.model.ClubStanding;
 import com.binodnme.epl.model.PremierLeague;
 import com.binodnme.epl.rest.onefootball.OneFootball;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +43,9 @@ public class StandingsFragment extends Fragment implements OneFootball.Standings
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecycler.setLayoutManager(mLayoutManager);
 
+        mAdapter = new StandingsAdapter(new ArrayList<ClubStanding>());
+        mRecycler.setAdapter(mAdapter);
+
         OneFootball.setStandingsListener(this);
 
         PremierLeague.fetchCurrentStanding(getActivity());
@@ -54,7 +57,6 @@ public class StandingsFragment extends Fragment implements OneFootball.Standings
 
                     @Override
                     public void onRefresh() {
-                        System.out.println("refreshing");
                         mErrorMessage.setVisibility(View.GONE);
                         PremierLeague.fetchCurrentStanding(getActivity());
                     }
@@ -69,8 +71,7 @@ public class StandingsFragment extends Fragment implements OneFootball.Standings
     public void onSuccess(List<ClubStanding> clubStandings) {
         mErrorMessage.setVisibility(View.GONE);
         mSwipeRefreshLayout.setRefreshing(false);
-        mAdapter = new StandingsAdapter(clubStandings);
-        mRecycler.setAdapter(mAdapter);
+        ((StandingsAdapter) mAdapter).setDataset(clubStandings);
     }
 
     @Override
