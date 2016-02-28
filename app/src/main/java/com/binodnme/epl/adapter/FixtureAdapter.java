@@ -29,6 +29,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private static final int MATCH_LIVE = 1;
     private static final int MATCH_UPCOMING = 2;
     private static final int MATCH_POSTPONED = 3;
+    private static final int MATCH_ABANDONED = 4;
 
     public static final String FIXTURE = "fixture";
 
@@ -125,6 +126,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
+        System.out.println("match status : "+dataSet.get(position).getMatchStatus());
         String matchStatus = dataSet.get(position).getMatchStatus().toUpperCase();
         switch (matchStatus){
             case ApplicationConstant.FT:
@@ -247,6 +249,10 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
                 case ApplicationConstant.PP:
                     flvh.matchStatus.setText("postponed");
+                    flvh.matchStatus.setTextColor(Color.parseColor("#ff0000"));
+                    break;
+                case ApplicationConstant.AD:
+                    flvh.matchStatus.setText("abandoned");
                     flvh.matchStatus.setTextColor(Color.parseColor("#ff0000"));
                     break;
                 default:

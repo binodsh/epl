@@ -1,6 +1,7 @@
 package com.binodnme.epl.activity;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -32,12 +33,14 @@ public class MatchDetailsActivity extends AppCompatActivity implements OneFootba
     private TextView matchScore;
     private TextView matchDate;
 
+    //should be removed later
+//    private boolean notificationActiveStatus = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_details);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
 
         Bundle args = getIntent().getExtras();
         Fixture fixture = (Fixture) args.getSerializable(FixtureAdapter.FIXTURE);
@@ -96,4 +99,15 @@ public class MatchDetailsActivity extends AppCompatActivity implements OneFootba
     public void onFailure() {
 
     }
+
+
+//    public void onClickNotificationButton(View view){
+//        if(notificationActiveStatus){
+//            ((ImageView) view).setImageResource(getResources().getIdentifier("notification_inactive","drawable", getPackageName()));
+//            notificationActiveStatus = false;
+//        }else{
+//            ((ImageView) view).setImageResource(getResources().getIdentifier("notification_active","drawable", getPackageName()));
+//            notificationActiveStatus = true;
+//        }
+//    }
 }

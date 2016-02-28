@@ -11,4 +11,5 @@ public class ApplicationConstant {
     public static final String SH = "SH";  //first half
     public static final String PM = "PM";  //pre match
     public static final String PP = "PP";   //postponed
+    public static final String AD = "AD";   //abandoned
 }

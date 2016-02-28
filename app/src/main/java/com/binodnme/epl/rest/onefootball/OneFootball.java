@@ -68,6 +68,7 @@ public class OneFootball {
     private static final String SECONDHALF = "secondhalf";
     private static final String PREMATCH = "prematch";
     private static final String POSTPONED = "postponed";
+    private static final String ABANDONED = "abandoned";
 
     private static final String MATCH = "match";
     private static final String MINUTE = "minute";
@@ -209,6 +210,7 @@ public class OneFootball {
 
     public static void fetchFixtures(long matchDayId){
         String url = BASE_PATH+COMPETITION_ID+"/"+SEASON_ID+"/matchdays/"+matchDayId+".json";
+        System.out.println("fixture url : "+url);
 
         OneFootballClient.get(url, new RequestParams(), new JsonHttpResponseHandler(){
             @Override
@@ -273,6 +275,10 @@ public class OneFootball {
 
                                     case POSTPONED:
                                         fixture.setMatchStatus(ApplicationConstant.PP);
+                                        break;
+
+                                    case ABANDONED:
+                                        fixture.setMatchStatus(ApplicationConstant.AD);
                                 }
                                 fixtures.add(fixture);
                             }
