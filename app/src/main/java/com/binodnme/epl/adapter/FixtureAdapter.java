@@ -2,8 +2,10 @@ package com.binodnme.epl.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.binodnme.epl.EplApplication;
 import com.binodnme.epl.R;
 import com.binodnme.epl.activity.MatchDetailsActivity;
 import com.binodnme.epl.constants.ApplicationConstant;
@@ -126,7 +129,6 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        System.out.println("match status : "+dataSet.get(position).getMatchStatus());
         String matchStatus = dataSet.get(position).getMatchStatus().toUpperCase();
         switch (matchStatus){
             case ApplicationConstant.FT:
@@ -237,14 +239,17 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             switch (fixture.getMatchStatus().toUpperCase()){
                 case ApplicationConstant.FH:
                     flvh.matchStatus.setText("first half");
+                    flvh.matchStatus.setTextColor(ContextCompat.getColor(EplApplication.getContext(), R.color.green));
                     break;
 
                 case ApplicationConstant.SH:
                     flvh.matchStatus.setText("second half");
+                    flvh.matchStatus.setTextColor(ContextCompat.getColor(EplApplication.getContext(), R.color.green));
                     break;
 
                 case ApplicationConstant.HT:
                     flvh.matchStatus.setText("half time");
+                    flvh.matchStatus.setTextColor(ContextCompat.getColor(EplApplication.getContext(), R.color.green));
                     break;
 
                 case ApplicationConstant.PP:
@@ -257,6 +262,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     break;
                 default:
                     flvh.matchStatus.setText("live");
+                    flvh.matchStatus.setTextColor(ContextCompat.getColor(EplApplication.getContext(), R.color.green));
             }
 
             flvh.linearLayout.setOnClickListener(new View.OnClickListener(){
