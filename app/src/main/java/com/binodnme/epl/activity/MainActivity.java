@@ -1,5 +1,8 @@
 package com.binodnme.epl.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -11,6 +14,7 @@ import android.view.MenuItem;
 
 import com.binodnme.epl.R;
 import com.binodnme.epl.adapter.SliderAdapter;
+import com.binodnme.epl.service.LiveMatchService;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -30,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(mPager);
+
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putInt("abc", 5);
+        editor.commit();
+
+        int testValue = sharedPref.getInt("abc",1);
+        System.out.println("test value : "+testValue);
+
 
     }
 

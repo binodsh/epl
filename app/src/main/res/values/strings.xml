@@ -10,5 +10,11 @@
     <string name="points">Pts</string>
     <string name="title_activity_match_details">MatchDetailsActivity</string>
     <string name="starting_lineup">Starting Lineup</string>
+    <string name="firstHalf">first half</string>
+    <string name="secondHalf">second half</string>
+    <string name="halfTime">half time</string>
+    <string name="postponed">postponed</string>
+    <string name="abandoned">abandoned</string>
+    <string name="live">live</string>
 
 </resources>

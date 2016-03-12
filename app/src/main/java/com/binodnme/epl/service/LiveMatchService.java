@@ -9,13 +9,15 @@ import android.support.annotation.Nullable;
  * Created by binodnme on 2/27/16.
  */
 public class LiveMatchService extends Service {
-
+    private static final long interval = 20*1000;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //check for live match in current match day
         //if live match exists: pool the data at regular interval
         // and update the UI
+
+
 
 
         return START_STICKY;

@@ -211,7 +211,7 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     Bundle args = new Bundle();
                     args.putSerializable(FIXTURE, fixture);
                     intent.putExtras(args);
-                    v.getContext().startActivity(intent);
+//                    v.getContext().startActivity(intent);
                 }
             });
 
@@ -238,30 +238,30 @@ public class FixtureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             switch (fixture.getMatchStatus().toUpperCase()){
                 case ApplicationConstant.FH:
-                    flvh.matchStatus.setText("first half");
+                    flvh.matchStatus.setText(R.string.firstHalf);
                     flvh.matchStatus.setTextColor(ContextCompat.getColor(EplApplication.getContext(), R.color.green));
                     break;
 
                 case ApplicationConstant.SH:
-                    flvh.matchStatus.setText("second half");
+                    flvh.matchStatus.setText(R.string.secondHalf);
                     flvh.matchStatus.setTextColor(ContextCompat.getColor(EplApplication.getContext(), R.color.green));
                     break;
 
                 case ApplicationConstant.HT:
-                    flvh.matchStatus.setText("half time");
+                    flvh.matchStatus.setText(R.string.halfTime);
                     flvh.matchStatus.setTextColor(ContextCompat.getColor(EplApplication.getContext(), R.color.green));
                     break;
 
                 case ApplicationConstant.PP:
-                    flvh.matchStatus.setText("postponed");
+                    flvh.matchStatus.setText(R.string.postponed);
                     flvh.matchStatus.setTextColor(Color.parseColor("#ff0000"));
                     break;
                 case ApplicationConstant.AD:
-                    flvh.matchStatus.setText("abandoned");
+                    flvh.matchStatus.setText(R.string.abandoned);
                     flvh.matchStatus.setTextColor(Color.parseColor("#ff0000"));
                     break;
                 default:
-                    flvh.matchStatus.setText("live");
+                    flvh.matchStatus.setText(R.string.live);
                     flvh.matchStatus.setTextColor(ContextCompat.getColor(EplApplication.getContext(), R.color.green));
             }
 
